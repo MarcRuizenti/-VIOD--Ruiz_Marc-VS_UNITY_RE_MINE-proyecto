@@ -7,10 +7,11 @@ public class RotateMape : MonoBehaviour
 
     private bool rigtClickDown = false;
     public float speedRtotation;
+    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -19,11 +20,6 @@ public class RotateMape : MonoBehaviour
         if (Input.GetMouseButtonUp(1))
         {
             rigtClickDown = false;
-        }
-
-        if (rigtClickDown) { 
-            Quaternion direction = Quaternion.LookRotation(transform.up, transform.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, direction, speedRtotation * Time.deltaTime);
         }
     }
 
@@ -35,4 +31,16 @@ public class RotateMape : MonoBehaviour
         
     }
 
+    private void FixedUpdate()
+    {
+        if (rigtClickDown)
+        {
+            float x = Input.GetAxisRaw("Mouse X") * Time.fixedDeltaTime * speedRtotation;
+            float y = Input.GetAxisRaw("Mouse Y") * Time.fixedDeltaTime * speedRtotation;
+
+
+            rb.AddTorque(Vector3.down * x);
+            rb.AddTorque(Vector3.right * y);
+        }
+    }
 }
