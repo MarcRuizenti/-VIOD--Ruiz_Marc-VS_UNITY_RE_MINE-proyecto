@@ -22,7 +22,7 @@ public class LogicMap : MonoBehaviour
     {
         if (cube != null)
         {
-            lista[y, x, z] = cube;
+            lista[y, x, z] = cube.gameObject;
         }
     }
 
