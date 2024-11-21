@@ -10,20 +10,29 @@ public class LogicMap : MonoBehaviour
     [SerializeField] private Material Mina;
     private int numCube;
     private int numMinas;
-    void Start()
+    private void OnEnable()
     {
         numCube = GameManager.Instance.numCube;
         numMinas = GameManager.Instance.numMinas;
-        lista = new GameObject[numCube, numCube, numCube];
         listaMinas = new bool[numCube, numCube, numCube];
-    }
 
-    public void AddCube(GameObject cube, int x, int y, int z)
+    }
+    public void AddCube(GameObject cube, int y, int x, int z)
     {
         if (cube != null)
         {
-            lista[y, x, z] = cube.gameObject;
+            if (lista != null)
+            {
+                lista[y, x, z] = cube;
+            }
+            else
+            {
+                Debug.Log(numCube);
+                lista = new GameObject[numCube, numCube, numCube];
+                lista[y, x, z] = cube;
+            }
         }
+
     }
 
     public void SpawnMinas()

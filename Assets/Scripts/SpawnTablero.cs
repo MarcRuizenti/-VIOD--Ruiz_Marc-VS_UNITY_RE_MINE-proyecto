@@ -9,8 +9,6 @@ public class SpawnTablero : MonoBehaviour
     [SerializeField] private Camera _camera;
     private LogicMap _logicMap;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +31,10 @@ public class SpawnTablero : MonoBehaviour
                     temp.transform.position = new Vector3(j, i, k);
                     temp.transform.parent = tablero.transform;
 
-                    _logicMap.AddCube(temp, j, i, k);
-
+                    if (_logicMap != null)
+                    {
+                        _logicMap.AddCube(temp, i, j, k);
+                    }
                 }
             }
         }
