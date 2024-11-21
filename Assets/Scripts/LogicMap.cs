@@ -27,7 +27,6 @@ public class LogicMap : MonoBehaviour
             }
             else
             {
-                Debug.Log(numCube);
                 lista = new GameObject[numCube, numCube, numCube];
                 lista[y, x, z] = cube;
             }
@@ -98,42 +97,87 @@ public class LogicMap : MonoBehaviour
                     // Comprobar si está en una cara externa
                     bool esExterno = y == 0 || y == numCube - 1 ||  // Cara superior/inferior
                                      x == 0 || x == numCube - 1 ||  // Cara izquierda/derecha
-                                     z == 0 || z == numCube - 1;   // Cara frontal/trasera
+                                     z == 0 || z == numCube - 1;
 
-                    if (!esExterno) continue; // Ignorar las casillas internas
+                    // Comprobar si es una esquina
+                    bool esEsquina = (y == 0 || y == numCube - 1) &&
+                                     (x == 0 || x == numCube - 1) &&
+                                     (z == 0 || z == numCube - 1);
 
-                    // Verificar si ya tiene el material Mina
-                    if (listaMinas[y, x, z])
-                    {
-                        Debug.Log("Adios");
-                        continue; // No cambiar el material de esta casilla
-                    }
+                    // Si no es externo o si ya tiene el material Mina, ignorar
+                    if (!esExterno || listaMinas[y, x, z])
+                        continue;
 
-                    // Contar vecinos con material Mina
                     int numVecinosConMina = 0;
 
-                    for (int dy = -1; dy <= 1; dy++)
+                    if (esEsquina)
                     {
-                        for (int dx = -1; dx <= 1; dx++)
+                        // Para esquinas, evaluar todos los vecinos alrededor de la casilla
+                        for (int dy = -1; dy <= 1; dy++)
                         {
-                            for (int dz = -1; dz <= 1; dz++)
+                            for (int dx = -1; dx <= 1; dx++)
                             {
-                                // Coordenadas del vecino
-                                int ny = y + dy;
-                                int nx = x + dx;
-                                int nz = z + dz;
-
-                                // Saltar si es la misma casilla
-                                if (dy == 0 && dx == 0 && dz == 0)
-                                    continue;
-
-                                // Verificar si el vecino está dentro de los límites
-                                if (ny >= 0 && ny < numCube && nx >= 0 && nx < numCube && nz >= 0 && nz < numCube)
+                                for (int dz = -1; dz <= 1; dz++)
                                 {
-                                    // Contar si el vecino tiene el material Mina
-                                    if (listaMinas[ny, nx, nz])
+                                    // Coordenadas del vecino
+                                    int ny = y + dy;
+                                    int nx = x + dx;
+                                    int nz = z + dz;
+
+                                    // Saltar si es la misma casilla
+                                    if (dy == 0 && dx == 0 && dz == 0)
+                                        continue;
+
+                                    // Verificar si el vecino está dentro de los límites
+                                    if (ny >= 0 && ny < numCube && nx >= 0 && nx < numCube && nz >= 0 && nz < numCube)
                                     {
-                                        numVecinosConMina++;
+                                        // Contar si el vecino tiene el material Mina
+                                        if (listaMinas[ny, nx, nz])
+                                        {
+                                            numVecinosConMina++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Para caras externas que no son esquinas, evaluar vecinos en la misma capa
+                        for (int dy = -1; dy <= 1; dy++)
+                        {
+                            for (int dx = -1; dx <= 1; dx++)
+                            {
+                                for (int dz = -1; dz <= 1; dz++)
+                                {
+                                    // Coordenadas del vecino
+                                    int ny = y + dy;
+                                    int nx = x + dx;
+                                    int nz = z + dz;
+
+                                    // Saltar si es la misma casilla
+                                    if (dy == 0 && dx == 0 && dz == 0)
+                                        continue;
+
+                                    // Verificar si el vecino está dentro de los límites
+                                    if (ny >= 0 && ny < numCube && nx >= 0 && nx < numCube && nz >= 0 && nz < numCube)
+                                    {
+                                        // Comprobar si el vecino está en la misma capa
+                                        if ((y == 0 || y == numCube - 1) && ny == y) // Capa superior/inferior
+                                        {
+                                            if (listaMinas[ny, nx, nz])
+                                                numVecinosConMina++;
+                                        }
+                                        else if ((x == 0 || x == numCube - 1) && nx == x) // Capa izquierda/derecha
+                                        {
+                                            if (listaMinas[ny, nx, nz])
+                                                numVecinosConMina++;
+                                        }
+                                        else if ((z == 0 || z == numCube - 1) && nz == z) // Capa frontal/trasera
+                                        {
+                                            if (listaMinas[ny, nx, nz])
+                                                numVecinosConMina++;
+                                        }
                                     }
                                 }
                             }
