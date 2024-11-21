@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numeroMinas:
+  - {fileID: 2100000, guid: de857ef8f003a794aab1ede4eab21359, type: 2}
   - {fileID: 2100000, guid: 603ae7dc1d4eed541958ea69ef37b2cc, type: 2}
   - {fileID: 2100000, guid: 2dd92247e0b4283418967996ca84c203, type: 2}
   - {fileID: 2100000, guid: 71a07acb3a5d80a4db5698e5aeaccffb, type: 2}
@@ -371,7 +372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16042994, y: 0.37686962, z: -0.06645225, w: 0.9098438}
+  m_LocalRotation: {x: 0.16042991, y: 0.37686962, z: -0.066452235, w: 0.9098438}
   m_LocalPosition: {x: -4.72, y: 3.57, z: -4.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -434,8 +435,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1597890646}
   - component: {fileID: 1597890647}
-  - component: {fileID: 1597890648}
-  - component: {fileID: 1597890649}
   m_Layer: 0
   m_Name: Tablero
   m_TagString: Untagged
@@ -470,55 +469,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdecae0b7d981f649a98ecaf23b1621a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedRtotation: 5000
---- !u!65 &1597890648
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597890644}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
+  speedRtotation: 100
+  distance: 1000
+  masck:
     serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1597890649
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597890644}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 3
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+    m_Bits: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
