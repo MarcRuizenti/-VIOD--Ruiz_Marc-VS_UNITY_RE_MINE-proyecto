@@ -21,7 +21,6 @@ public class RotateMape : MonoBehaviour
             {
                 if (hit.collider != null)
                 {
-                    Debug.Log(hit.collider.name);
                     rigtClickDown = true;
                 }
             }

@@ -6,15 +6,33 @@ public class CubeLogic : MonoBehaviour
 {
     public Vector3 pos;
     public LogicMap _logicMap;
+    public bool click = false;
+    public bool IAmclick = false;
+
+    private void Update()
+    {
+        if (click && !IAmclick) 
+        {
+            if (_logicMap != null)
+            {
+                _logicMap.Click(this.gameObject);
+                click = false;
+                IAmclick = true;
+            }
+        }
+    }
 
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(this.gameObject.transform.parent);
             if (_logicMap != null)
             {
-                _logicMap.Click(this.gameObject);
+                if (!IAmclick) 
+                { 
+                    _logicMap.Click(this.gameObject);
+                    IAmclick = true;
+                }
             }
         }
     }
