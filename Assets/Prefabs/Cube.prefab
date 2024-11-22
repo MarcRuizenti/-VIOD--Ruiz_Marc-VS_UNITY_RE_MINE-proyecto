@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160593289689829363}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6901289894403577604
 MeshFilter:
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 23cf4961488f58e4f9093ea22a57451d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,8 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 042d3412b4a88314c9404a940fe7818a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bandera: {fileID: 2100000, guid: cca53638f7d900943816ac5e4722fa21, type: 2}
+  _default: {fileID: 2100000, guid: 23cf4961488f58e4f9093ea22a57451d, type: 2}
   pos: {x: 0, y: 0, z: 0}
   _logicMap: {fileID: 0}
+  click: 0
+  IAmclick: 0
 --- !u!65 &1488238131599116461
 BoxCollider:
   m_ObjectHideFlags: 0
