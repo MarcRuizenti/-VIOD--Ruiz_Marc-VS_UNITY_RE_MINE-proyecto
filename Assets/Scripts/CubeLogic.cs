@@ -5,7 +5,7 @@ using UnityEngine;
 public class CubeLogic : MonoBehaviour
 {
     [SerializeField] private Material _bandera;
-    [SerializeField] private Material _default;
+    private Material _default;
     private bool bandera = false;
     private bool posibleBandera = false;
 
@@ -49,10 +49,11 @@ public class CubeLogic : MonoBehaviour
 
         if (Input.GetMouseButtonUp(1))
         {
-            if (posibleBandera)
+            if (posibleBandera && !IAmclick)
             {
                 if (!bandera)
                 {
+                    _default = transform.GetComponent<Renderer>().material;
                     transform.GetComponent<Renderer>().material = _bandera;
                     bandera = !bandera;
                 }
