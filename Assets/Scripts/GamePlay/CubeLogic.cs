@@ -6,7 +6,7 @@ public class CubeLogic : MonoBehaviour
 {
     [SerializeField] private Material _bandera;
     private Material _default;
-    private bool bandera = false;
+    public bool bandera = false;
     private bool posibleBandera = false;
 
     public Vector3 pos;
@@ -34,11 +34,17 @@ public class CubeLogic : MonoBehaviour
         {
             if (_logicMap != null)
             {
+                if (IAmclick)
+                {
+                    _logicMap.dobelClick(this.gameObject);
+
+                }
                 if (!IAmclick && !bandera) 
                 { 
                     _logicMap.Click(this.gameObject);
                     IAmclick = true;
                 }
+                
             }
         }
         

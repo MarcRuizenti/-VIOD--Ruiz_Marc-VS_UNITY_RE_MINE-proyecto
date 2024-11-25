@@ -31,9 +31,7 @@ public class SpawnTablero : MonoBehaviour
             {
                 for (int k = 0; k < numCube; k++)
                 {
-                    bool esExterno = i == 0 || i == numCube - 1 ||
-                                     j == 0 || j == numCube - 1 ||
-                                     k == 0 || k == numCube - 1;
+                    bool esExterno = _logicMap.esExterna(i, j, k);
 
                     if (!esExterno) continue;
 
@@ -73,6 +71,5 @@ public class SpawnTablero : MonoBehaviour
 
         _logicMap.SpawnNums();
     }
-
 }
 
