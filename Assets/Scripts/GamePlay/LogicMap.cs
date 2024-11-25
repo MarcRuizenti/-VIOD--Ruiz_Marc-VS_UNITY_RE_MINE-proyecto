@@ -266,6 +266,15 @@ public class LogicMap : MonoBehaviour
             }
         }
     }
+
+    private bool checkWin()
+    {
+        bool win = true;
+
+
+        return win;
+    } 
+
     private int ContarVecinosConMinas(int y, int x, int z, bool esEsquina)
     {
         int numVecinosConMina = 0;

@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     public int numBanderas;
     [SerializeField] private SpawnTablero st;
 
-
-    
     public static GameManager Instance;
     private void Awake()
     {

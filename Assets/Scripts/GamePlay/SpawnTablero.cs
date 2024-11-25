@@ -71,5 +71,13 @@ public class SpawnTablero : MonoBehaviour
 
         _logicMap.SpawnNums();
     }
+
+    private void Update()
+    {
+        if (GameManager.Instance.numBanderas == GameManager.Instance.numMinas)
+        {
+
+        }
+    }
 }
 
