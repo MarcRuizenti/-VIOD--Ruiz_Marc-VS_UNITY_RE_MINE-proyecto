@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8a804ff82154d0a498210f038e806a34, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 70a34834fdc228d43b155ce2354712dd, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1433,7 +1433,7 @@ PrefabInstance:
       objectReference: {fileID: 1247489926}
     - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: numCube
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: numMinas
@@ -1470,7 +1470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1187987592941688054, guid: 7ba3cc440d36d57408849e878736403c, type: 3}
       propertyPath: distanceCamera
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5548702254973082711, guid: 7ba3cc440d36d57408849e878736403c, type: 3}
       propertyPath: m_Name
