@@ -155,9 +155,16 @@ public class LogicMap : MonoBehaviour
 
         if (!cube.GetComponent<CubeLogic>().IAmclick) return;
 
+        Material temp = listaMeriales[y, x, z];
+
+        if (temp == Mina)
+        {
+            GameManager.Instance.Loss();
+            return;
+        }
+
         int numBandera = numBanderasCube(cube);
         int numMinas = numMatirial(cube);
-        Debug.Log(numBandera + " " + numMinas);
         if (numMinas == numBandera)
         {
             bool esEsquina = Esquina(y, x, z);
@@ -183,6 +190,7 @@ public class LogicMap : MonoBehaviour
                             if (lista[ny, nx, nz] != null && lista[ny, nx, nz].GetComponent<CubeLogic>() != null)
                             {
                                 vecino = lista[ny, nx, nz].GetComponent<CubeLogic>();
+                                
                                 if (!vecino.click)
                                 {
                                     vecino.click = true;
@@ -204,6 +212,12 @@ public class LogicMap : MonoBehaviour
         Material temp = listaMeriales[y, x, z];
 
         cube.GetComponent<Renderer>().materials = new Material[] { temp };
+
+        if (temp == Mina)
+        {
+            GameManager.Instance.Loss();
+            return;
+        }
 
         if (temp != numeroMinas[0]) return;
 
@@ -267,13 +281,32 @@ public class LogicMap : MonoBehaviour
         }
     }
 
-    private bool checkWin()
+    public bool checkWin()
     {
         bool win = true;
 
+        for (int y = 0; y < numCube; y++)
+        {
+            for (int x = 0; x < numCube; x++)
+            {
+                for (int z = 0; z < numCube; z++) 
+                {
+                    if (!esExterna(y, x, z)) continue;
+
+                    if (listaMinas[y, x, z])
+                    {
+                        if (!lista[y, x, z].GetComponent<CubeLogic>().bandera)
+                        {
+                            win = false; break;
+                        }
+                    }
+                }
+            }
+        }
 
         return win;
-    } 
+
+    }
 
     private int ContarVecinosConMinas(int y, int x, int z, bool esEsquina)
     {

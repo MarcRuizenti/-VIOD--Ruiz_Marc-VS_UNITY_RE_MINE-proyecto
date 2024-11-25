@@ -34,10 +34,12 @@ public class RotateMape : MonoBehaviour
 
         if (rigtClickDown)
         {
-            float x = Input.GetAxisRaw("Mouse X") * Time.fixedDeltaTime * speedRtotation;
-            float y = Input.GetAxisRaw("Mouse Y") * Time.fixedDeltaTime * speedRtotation;
+            float x = Input.GetAxisRaw("Mouse X")  * speedRtotation;
+            float y = Input.GetAxisRaw("Mouse Y") * speedRtotation;
 
-            transform.Rotate(-y, x, 0);
+            Quaternion rot = transform.rotation * Quaternion.Euler(-y, x, 0);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, 0.1f);
         }
     }
 

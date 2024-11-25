@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,5 +35,17 @@ public class GameManager : MonoBehaviour
     public void RemoveBandera() 
     { 
         numBanderas--;
+    }
+
+    public void Win()
+    {
+        numBanderas = 0;
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void Loss()
+    {
+        numBanderas = 0;
+        SceneManager.LoadScene("Menu");
     }
 }

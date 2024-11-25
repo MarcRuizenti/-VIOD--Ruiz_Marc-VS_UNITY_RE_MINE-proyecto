@@ -12,7 +12,6 @@ public class UI : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }
 }

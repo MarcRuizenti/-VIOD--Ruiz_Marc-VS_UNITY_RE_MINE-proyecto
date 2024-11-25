@@ -31,9 +31,8 @@ public class SpawnTablero : MonoBehaviour
             {
                 for (int k = 0; k < numCube; k++)
                 {
-                    bool esExterno = _logicMap.esExterna(i, j, k);
+                    if (!_logicMap.esExterna(i, j, k)) continue;
 
-                    if (!esExterno) continue;
 
                     GameObject temp = Instantiate(cube);
 
@@ -76,7 +75,10 @@ public class SpawnTablero : MonoBehaviour
     {
         if (GameManager.Instance.numBanderas == GameManager.Instance.numMinas)
         {
-
+            if (_logicMap.checkWin())
+            {
+                GameManager.Instance.Win();
+            }
         }
     }
 }
