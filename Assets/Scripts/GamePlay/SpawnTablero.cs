@@ -1,29 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnTablero : MonoBehaviour
 {
     [Header("Distancias")]
     public float distanceCamera;
     public float alturaCamera;
+    public float minDistance;
+    public float maxDistance;
+    private Vector3 centro;
     [Header("Objetos")]
     [SerializeField] private GameObject tablero;
     [SerializeField] private GameObject cube;
     [SerializeField] private Camera _camera;
     private LogicMap _logicMap;
-
+    private int numCube = 11;
 
     private void Start()
     {
         SpwanTablero();
+        minDistance = 1;
+        maxDistance = 5;
     }
     public void SpwanTablero()
     {
         _logicMap = GetComponent<LogicMap>();
-
-        int numCube = GameManager.Instance.numCube;
+        if (GameManager.Instance != null)
+        {
+            numCube = GameManager.Instance.numCube;
+        }
 
         for (int i = 0; i < numCube; i++)
         {
@@ -36,6 +45,8 @@ public class SpawnTablero : MonoBehaviour
 
                     GameObject temp = Instantiate(cube);
 
+                    temp.gameObject.isStatic = true;
+
                     temp.transform.position = new Vector3(j, i, k);
                     temp.GetComponent<CubeLogic>().pos = new Vector3(j, i, k);
                     if (_logicMap != null)
@@ -47,7 +58,7 @@ public class SpawnTablero : MonoBehaviour
             }
         }
 
-        Vector3 centro = Vector3.zero;
+        centro = Vector3.zero;
         int num = 0;
         foreach (GameObject cube in _logicMap.lista)
         {
@@ -73,13 +84,52 @@ public class SpawnTablero : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.numBanderas == GameManager.Instance.numMinas)
+        if (GameManager.Instance != null)
         {
-            if (_logicMap.checkWin())
+            if (GameManager.Instance.numBanderas == GameManager.Instance.numMinas)
             {
-                GameManager.Instance.Win();
+                if (_logicMap.checkWin())
+                {
+                    GameManager.Instance.Win();
+                }
+            }
+
+            if (GameManager.Instance.reset)
+            {
+                for (int y = 0; y < numCube; y++)
+                {
+                    for (int x = 0; x < numCube; x++)
+                    {
+                        for (int z = 0; z < numCube; z++) 
+                        { 
+                            if (_logicMap.lista[y, x, z])
+                            {
+                                Destroy(_logicMap.lista[y, x, z]);
+                            }
+                        }
+                    }
+                }
+                GameManager.Instance.reset = false;
             }
         }
+        else{
+            if (_logicMap.checkWin())
+            {
+                SceneManager.LoadScene("Menu");
+            }
+        }
+        float mouse = Input.GetAxis("Mouse ScrollWheel");
+        if (mouse != 0)
+        {
+            if (distanceCamera >= minDistance && distanceCamera <= maxDistance)
+            {
+                distanceCamera += mouse * 2;
+                distanceCamera = Mathf.Clamp(distanceCamera, minDistance, maxDistance);
+            }
+        }
+
+        _camera.transform.position = centro + -_camera.transform.forward * numCube * distanceCamera + tablero.transform.up * numCube * alturaCamera;
+
     }
 }
 

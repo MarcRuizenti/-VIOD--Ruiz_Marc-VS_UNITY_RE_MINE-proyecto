@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LogicMap : MonoBehaviour
 {
@@ -10,13 +11,13 @@ public class LogicMap : MonoBehaviour
     private bool[,,] listaMinas;
     [SerializeField] private List<Material> numeroMinas;
     [SerializeField] private Material Mina;
-    private int numCube;
-    private int numMinas;
+    private int numCube = 11;
+    private int numMinas = 99;
 
     private void OnEnable()
     {
-        numCube = GameManager.Instance.numCube;
-        numMinas = GameManager.Instance.numMinas;
+        if (GameManager.Instance != null) numCube = GameManager.Instance.numCube;
+        if (GameManager.Instance != null) numMinas = GameManager.Instance.numMinas;
         listaMinas = new bool[numCube, numCube, numCube];
         listaMeriales = new Material[numCube, numCube, numCube];
     }
@@ -159,7 +160,7 @@ public class LogicMap : MonoBehaviour
 
         if (temp == Mina)
         {
-            GameManager.Instance.Loss();
+            if (GameManager.Instance != null) GameManager.Instance.Loss();
             return;
         }
 
@@ -215,7 +216,12 @@ public class LogicMap : MonoBehaviour
 
         if (temp == Mina)
         {
-            GameManager.Instance.Loss();
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.Loss();
+                return;
+            }
+            SceneManager.LoadScene("Menu");
             return;
         }
 

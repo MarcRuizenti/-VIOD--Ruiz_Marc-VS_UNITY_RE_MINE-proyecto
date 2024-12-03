@@ -30,6 +30,22 @@ public class CubeLogic : MonoBehaviour
 
     private void OnMouseOver()
     {
+        if (GameManager.Instance != null)
+        {
+            if (GameManager.Instance.canMove)
+            {
+                DetectClick();
+            }
+        }
+        else
+        {
+            DetectClick();
+        }
+
+    }
+
+    private void DetectClick()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             if (_logicMap != null)
@@ -39,15 +55,15 @@ public class CubeLogic : MonoBehaviour
                     _logicMap.dobelClick(this.gameObject);
 
                 }
-                if (!IAmclick && !bandera) 
-                { 
+                if (!IAmclick && !bandera)
+                {
                     _logicMap.Click(this.gameObject);
                     IAmclick = true;
                 }
-                
+
             }
         }
-        
+
         if (Input.GetMouseButtonDown(1))
         {
             posibleBandera = true;
@@ -62,13 +78,13 @@ public class CubeLogic : MonoBehaviour
                     _default = transform.GetComponent<Renderer>().material;
                     transform.GetComponent<Renderer>().material = _bandera;
                     bandera = !bandera;
-                    GameManager.Instance.AddBandera();
+                    if (GameManager.Instance != null) GameManager.Instance.AddBandera();
                 }
                 else
                 {
                     transform.GetComponent<Renderer>().material = _default;
                     bandera = !bandera;
-                    GameManager.Instance.RemoveBandera();
+                    if (GameManager.Instance != null) GameManager.Instance.RemoveBandera();
                 }
 
                 posibleBandera = false;

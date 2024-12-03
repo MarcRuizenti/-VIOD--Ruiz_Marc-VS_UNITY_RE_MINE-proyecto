@@ -12,6 +12,21 @@ public class RotateMape : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance != null)
+        {
+            if (GameManager.Instance.canMove)
+            {
+                Rotate();
+            }
+        }
+        else
+        {
+            Rotate();
+        }
+    }
+
+    private void Rotate()
+    {
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -34,7 +49,7 @@ public class RotateMape : MonoBehaviour
 
         if (rigtClickDown)
         {
-            float x = Input.GetAxisRaw("Mouse X")  * speedRtotation;
+            float x = Input.GetAxisRaw("Mouse X") * speedRtotation;
             float y = Input.GetAxisRaw("Mouse Y") * speedRtotation;
 
             Quaternion rot = transform.rotation * Quaternion.Euler(-y, x, 0);
@@ -42,5 +57,4 @@ public class RotateMape : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, 0.1f);
         }
     }
-
 }

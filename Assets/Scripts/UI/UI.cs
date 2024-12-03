@@ -14,4 +14,15 @@ public class UI : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void LoadMenu()
+    {
+        GameManager.Instance.ResetGamePlay();
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void ChangeLevel()
+    {
+        GameManager.Instance.ChangeLevel();
+    }
 }

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bandera: {fileID: 2100000, guid: cca53638f7d900943816ac5e4722fa21, type: 2}
-  _default: {fileID: 2100000, guid: 23cf4961488f58e4f9093ea22a57451d, type: 2}
+  bandera: 0
   pos: {x: 0, y: 0, z: 0}
   _logicMap: {fileID: 0}
   click: 0
@@ -122,5 +122,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
