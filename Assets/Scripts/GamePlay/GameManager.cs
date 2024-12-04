@@ -84,12 +84,14 @@ public class GameManager : MonoBehaviour
         levelnum++;
         if (levelnum % 10 == 0)
         {
-            ChangeUIWin(false);
 
             numCube++;
             numMinas += 10;
         }
         canMove = true;
+        reset = true;
+        ChangeUIWin(false);
+
     }
 
     public void ResetGamePlay()
@@ -106,6 +108,5 @@ public class GameManager : MonoBehaviour
             ChangeUILoss(false);
         }
         canMove = true;
-        reset = true;
     }
 }

@@ -96,19 +96,8 @@ public class SpawnTablero : MonoBehaviour
 
             if (GameManager.Instance.reset)
             {
-                for (int y = 0; y < numCube; y++)
-                {
-                    for (int x = 0; x < numCube; x++)
-                    {
-                        for (int z = 0; z < numCube; z++) 
-                        { 
-                            if (_logicMap.lista[y, x, z])
-                            {
-                                Destroy(_logicMap.lista[y, x, z]);
-                            }
-                        }
-                    }
-                }
+                _logicMap.ClearArrays();
+                SpwanTablero();
                 GameManager.Instance.reset = false;
             }
         }

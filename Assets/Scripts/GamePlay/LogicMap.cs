@@ -39,56 +39,94 @@ public class LogicMap : MonoBehaviour
 
     }
 
+    public void ClearArrays()
+    {
+        for (int y = 0; y < numCube; y++)
+        {
+            for (int x = 0; x < numCube; x++)
+            {
+                for (int z = 0; z < numCube; z++)
+                {
+                    if (lista[y, x, z])
+                    {
+                        Destroy(lista[y, x, z]);
+                    }
+
+                    if (listaMinas[y, x, z])
+                    {
+                        listaMinas[y, x, z] = false;
+                    }
+                }
+            }
+        }
+
+
+        if (GameManager.Instance != null) numCube = GameManager.Instance.numCube;
+        if (GameManager.Instance != null) numMinas = GameManager.Instance.numMinas;
+        listaMinas = new bool[numCube, numCube, numCube];
+        listaMeriales = new Material[numCube, numCube, numCube];
+        lista = new GameObject[numCube, numCube, numCube];
+    }
+
     public void SpawnMinas()
     {
         int x = 0, y = 0, z = 0;
 
+        Debug.Log(numMinas);
         for (int i = 0; i < numMinas; i++)
         {
-            int cara = Random.Range(0, 6); 
+            bool isOk = false;
 
-            switch (cara)
+            do
             {
-                case 0: 
-                    y = 0;
-                    x = Random.Range(0, numCube);
-                    z = Random.Range(0, numCube);
-                    break;
+                int cara = Random.Range(0, 6);
 
-                case 1: 
-                    y = numCube - 1;
-                    x = Random.Range(0, numCube);
-                    z = Random.Range(0, numCube);
-                    break;
+                switch (cara)
+                {
+                    case 0:
+                        y = 0;
+                        x = Random.Range(0, numCube);
+                        z = Random.Range(0, numCube);
+                        break;
 
-                case 2: 
-                    z = 0;
-                    x = Random.Range(0, numCube);
-                    y = Random.Range(0, numCube);
-                    break;
+                    case 1:
+                        y = numCube - 1;
+                        x = Random.Range(0, numCube);
+                        z = Random.Range(0, numCube);
+                        break;
 
-                case 3: 
-                    z = numCube - 1;
-                    x = Random.Range(0, numCube);
-                    y = Random.Range(0, numCube);
-                    break;
+                    case 2:
+                        z = 0;
+                        x = Random.Range(0, numCube);
+                        y = Random.Range(0, numCube);
+                        break;
 
-                case 4: 
-                    x = 0;
-                    y = Random.Range(0, numCube);
-                    z = Random.Range(0, numCube);
-                    break;
+                    case 3:
+                        z = numCube - 1;
+                        x = Random.Range(0, numCube);
+                        y = Random.Range(0, numCube);
+                        break;
 
-                case 5: 
-                    x = numCube - 1;
-                    y = Random.Range(0, numCube);
-                    z = Random.Range(0, numCube);
-                    break;
-            }
-            listaMinas[y, x, z] = true;
+                    case 4:
+                        x = 0;
+                        y = Random.Range(0, numCube);
+                        z = Random.Range(0, numCube);
+                        break;
 
-            listaMeriales[y, x, z] = Mina;
+                    case 5:
+                        x = numCube - 1;
+                        y = Random.Range(0, numCube);
+                        z = Random.Range(0, numCube);
+                        break;
+                }
+                if (!listaMinas[y, x, z])
+                {
+                    listaMinas[y, x, z] = true;
 
+                    listaMeriales[y, x, z] = Mina;
+                    isOk = true;
+                }
+            } while (!isOk);
         }
     }
 
