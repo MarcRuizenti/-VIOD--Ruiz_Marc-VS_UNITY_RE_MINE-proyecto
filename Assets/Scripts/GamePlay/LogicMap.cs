@@ -72,7 +72,6 @@ public class LogicMap : MonoBehaviour
     {
         int x = 0, y = 0, z = 0;
 
-        Debug.Log(numMinas);
         for (int i = 0; i < numMinas; i++)
         {
             bool isOk = false;

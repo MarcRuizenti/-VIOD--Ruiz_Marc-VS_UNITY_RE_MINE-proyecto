@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateMape : MonoBehaviour
 {
-
+    public float zoomScale = 10;
     private bool rigtClickDown = false;
     public float speedRtotation;
     public float distance;

@@ -19,9 +19,16 @@ public class GameManager : MonoBehaviour
     private bool Iwin;
     public bool canMove = true;
     public bool reset = false;
+    public float timer;
+    public float timerCounter;
+    
     [Header("UI")]
     public TMP_Text winText;
     public TMP_Text lossText;
+    public TMP_Text timerText;
+    public TMP_Text numMinasText;
+    public TMP_Text numBanderasText;
+    public TMP_Text levelText;
 
     public Button nextLevel;
     public Button menuLoss;
@@ -33,12 +40,41 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
+    private void Start()
+    {
+        timerCounter = timer;
+    }
+    private void Update()
+    {
+        if (timerCounter > 0 && canMove)
+        {
+            timerCounter -= Time.deltaTime;
+        }
+        else if (timerCounter < 0)
+        {
+            timerCounter = 0;
+            Loss();
+        }
+
+        int min = Mathf.FloorToInt(timerCounter / 60);
+        int sec = Mathf.FloorToInt(timerCounter % 60);
+
+
+        if (timerText != null) timerText.text = string.Format("{0:00}:{1:00}", min, sec);  
+
+        if (numMinasText != null) numMinasText.text = numMinas.ToString();
+
+        if (numBanderasText != null) numBanderasText.text = numBanderas.ToString();
+
+        if (levelText != null) levelText.text = levelnum.ToString();
+    }
 
     public void AddBandera()
     {
         numBanderas++;
     }
 
+    
     public void RemoveBandera() 
     { 
         numBanderas--;
@@ -84,10 +120,11 @@ public class GameManager : MonoBehaviour
         levelnum++;
         if (levelnum % 10 == 0)
         {
-
             numCube++;
-            numMinas += 10;
+            numMinas += levelnum;
+            timer += 60;
         }
+        timerCounter = timer;
         canMove = true;
         reset = true;
         ChangeUIWin(false);

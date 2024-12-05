@@ -77,6 +77,7 @@ public class SpawnTablero : MonoBehaviour
 
         _camera.transform.parent = tablero.transform;
 
+        _camera.orthographicSize = numCube;
         _logicMap.SpawnMinas();
 
         _logicMap.SpawnNums();
@@ -107,17 +108,7 @@ public class SpawnTablero : MonoBehaviour
                 SceneManager.LoadScene("Menu");
             }
         }
-        float mouse = Input.GetAxis("Mouse ScrollWheel");
-        if (mouse != 0)
-        {
-            if (distanceCamera >= minDistance && distanceCamera <= maxDistance)
-            {
-                distanceCamera += mouse * 2;
-                distanceCamera = Mathf.Clamp(distanceCamera, minDistance, maxDistance);
-            }
-        }
-
-        _camera.transform.position = centro + -_camera.transform.forward * numCube * distanceCamera + tablero.transform.up * numCube * alturaCamera;
+       
 
     }
 }
