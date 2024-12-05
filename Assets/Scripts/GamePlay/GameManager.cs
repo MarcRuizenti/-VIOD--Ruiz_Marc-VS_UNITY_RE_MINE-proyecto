@@ -21,7 +21,9 @@ public class GameManager : MonoBehaviour
     public bool reset = false;
     public float timer;
     public float timerCounter;
-    
+    public int num0;
+    public bool activeHability1 = false;
+
     [Header("UI")]
     public TMP_Text winText;
     public TMP_Text lossText;
@@ -46,6 +48,20 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            activeHability1 = true;
+        }
+
+        if (activeHability1 && Input.GetMouseButtonDown(0))
+        {
+            timerCounter += num0;
+            num0 = 0;
+
+            activeHability1 = !activeHability1;
+        }
+
         if (timerCounter > 0 && canMove)
         {
             timerCounter -= Time.deltaTime;

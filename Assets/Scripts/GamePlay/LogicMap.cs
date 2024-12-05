@@ -264,6 +264,8 @@ public class LogicMap : MonoBehaviour
 
         if (temp != numeroMinas[0]) return;
 
+        if (GameManager.Instance != null && GameManager.Instance.activeHability1) GameManager.Instance.num0++;
+
         bool esEsquina = Esquina(y, x, z);
 
         for (int dy = -1; dy <= 1; dy++)
