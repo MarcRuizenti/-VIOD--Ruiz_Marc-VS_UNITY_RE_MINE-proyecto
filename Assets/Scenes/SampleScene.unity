@@ -1994,6 +1994,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453192743}
   m_CullTransparentMesh: 1
+--- !u!1 &1560818447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1560818450}
+  - component: {fileID: 1560818449}
+  m_Layer: 0
+  m_Name: SandClock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1560818449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560818447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841b746aa62c8cd4a813beed8951dcb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
+  energy: 5
+  maxEnergy: 3
+  level: 1
+  name: 
+--- !u!4 &1560818450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560818447}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 849.8069, y: 560.7992, z: 4.7269297}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1597890644 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7527420768146409296, guid: 31572c6d20706a540b1038a65fbceb60, type: 3}
@@ -2733,7 +2782,7 @@ PrefabInstance:
       objectReference: {fileID: 1453192745}
     - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: numCube
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: winText
@@ -2783,6 +2832,14 @@ PrefabInstance:
       propertyPath: numBanderasText
       value: 
       objectReference: {fileID: 1171468911}
+    - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
+      propertyPath: habilityList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
+      propertyPath: habilityList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1560818449}
     - target: {fileID: 8949304645542462899, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: m_Name
       value: GameManager

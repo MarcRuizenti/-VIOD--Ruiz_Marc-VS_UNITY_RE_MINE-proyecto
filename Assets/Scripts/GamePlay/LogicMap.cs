@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,7 @@ public class LogicMap : MonoBehaviour
     [SerializeField] private Material Mina;
     private int numCube = 11;
     private int numMinas = 99;
+    private int cubesActives = 0;
 
     private void OnEnable()
     {
@@ -149,11 +151,9 @@ public class LogicMap : MonoBehaviour
     {
         int numBandera = 0;
 
-        int y = (int)cube.GetComponent<CubeLogic>().pos.y;
-        int x = (int)cube.GetComponent<CubeLogic>().pos.x;
-        int z = (int)cube.GetComponent<CubeLogic>().pos.z;
+        Vector3 tempPos = cube.GetComponent<CubeLogic>().pos;
 
-        bool esEsquina = Esquina(y, x, z);
+        bool esEsquina = Esquina((int)tempPos.y, (int)tempPos.x, (int)tempPos.z);
 
         for (int dy = -1; dy <= 1; dy++)
         {
@@ -161,15 +161,15 @@ public class LogicMap : MonoBehaviour
             {
                 for (int dz = -1; dz <= 1; dz++)
                 {
-                    int ny = y + dy;
-                    int nx = x + dx;
-                    int nz = z + dz;
+                    int ny = (int)tempPos.y + dy;
+                    int nx = (int)tempPos.x + dx;
+                    int nz = (int)tempPos.z + dz;
 
                     if (dy == 0 && dx == 0 && dz == 0) continue;
 
                     if (ny < 0 || ny >= numCube || nx < 0 || nx >= numCube || nz < 0 || nz >= numCube) continue;
 
-                    if (esEsquina || EsMismaCapa(y, x, z, ny, nx, nz))
+                    if (esEsquina || EsMismaCapa((int)tempPos.y, (int)tempPos.x, (int)tempPos.z, ny, nx, nz))
                     {
                         if (lista[ny, nx, nz] != null && lista[ny, nx, nz].GetComponent<CubeLogic>() != null)
                         {
@@ -187,13 +187,11 @@ public class LogicMap : MonoBehaviour
     }
     public void dobelClick(GameObject cube)
     {
-        int y = (int)cube.GetComponent<CubeLogic>().pos.y;
-        int x = (int)cube.GetComponent<CubeLogic>().pos.x;
-        int z = (int)cube.GetComponent<CubeLogic>().pos.z;
 
         if (!cube.GetComponent<CubeLogic>().IAmclick) return;
+        Vector3 tempPos = cube.GetComponent<CubeLogic>().pos;
 
-        Material temp = listaMeriales[y, x, z];
+        Material temp = listaMeriales[(int)tempPos.y, (int)tempPos.x, (int)tempPos.z];
 
         if (temp == Mina)
         {
@@ -205,7 +203,7 @@ public class LogicMap : MonoBehaviour
         int numMinas = numMatirial(cube);
         if (numMinas == numBandera)
         {
-            bool esEsquina = Esquina(y, x, z);
+            bool esEsquina = Esquina((int)tempPos.y, (int)tempPos.x, (int)tempPos.z);
 
             for (int dy = -1; dy <= 1; dy++)
             {
@@ -213,25 +211,26 @@ public class LogicMap : MonoBehaviour
                 {
                     for (int dz = -1; dz <= 1; dz++)
                     {
-                        int ny = y + dy;
-                        int nx = x + dx;
-                        int nz = z + dz;
+                        int ny = (int)tempPos.y + dy;
+                        int nx = (int)tempPos.x + dx;
+                        int nz = (int)tempPos.z + dz;
 
                         if (dy == 0 && dx == 0 && dz == 0) continue;
 
                         if (ny < 0 || ny >= numCube || nx < 0 || nx >= numCube || nz < 0 || nz >= numCube) continue;
 
-                        if (esEsquina || EsMismaCapa(y, x, z, ny, nx, nz))
+                        if (esEsquina || EsMismaCapa((int)tempPos.y, (int)tempPos.x, (int)tempPos.z, ny, nx, nz))
                         {
                             CubeLogic vecino = null;
 
-                            if (lista[ny, nx, nz] != null && lista[ny, nx, nz].GetComponent<CubeLogic>() != null)
+                            if (lista[ny, nx, nz] != null)
                             {
                                 vecino = lista[ny, nx, nz].GetComponent<CubeLogic>();
-                                
-                                if (!vecino.click)
+
+                                if (!vecino.IAmclick && !vecino.bandera)
                                 {
-                                    vecino.click = true;
+                                    vecino.IAmclick = true;
+                                    Click(lista[ny, nx, nz]);
                                 }
                             }
                         }
@@ -243,13 +242,13 @@ public class LogicMap : MonoBehaviour
 
     public void Click(GameObject cube)
     {
-        int y = (int)cube.GetComponent<CubeLogic>().pos.y;
-        int x = (int)cube.GetComponent<CubeLogic>().pos.x;
-        int z = (int)cube.GetComponent<CubeLogic>().pos.z;
+        if (!cube.GetComponent<CubeLogic>().IAmclick) return;
 
-        Material temp = listaMeriales[y, x, z];
+        Vector3 tempPos = cube.GetComponent<CubeLogic>().pos;
 
-        cube.GetComponent<Renderer>().materials = new Material[] { temp };
+        Material temp = listaMeriales[(int)tempPos.y, (int)tempPos.x, (int)tempPos.z];
+
+        cube.GetComponent<Renderer>().material =  temp;
 
         if (temp == Mina)
         {
@@ -264,34 +263,35 @@ public class LogicMap : MonoBehaviour
 
         if (temp != numeroMinas[0]) return;
 
-        if (GameManager.Instance != null && GameManager.Instance.activeHability1) GameManager.Instance.num0++;
 
-        bool esEsquina = Esquina(y, x, z);
+        if (GameManager.Instance != null && GameManager.Instance.activeSandClock) GameManager.Instance.timerCounter++;
 
+        bool esEsquina = Esquina((int)tempPos.y, (int)tempPos.x, (int)tempPos.z);
         for (int dy = -1; dy <= 1; dy++)
         {
             for (int dx = -1; dx <= 1; dx++)
             {
                 for (int dz = -1; dz <= 1; dz++)
                 {
-                    int ny = y + dy;
-                    int nx = x + dx;
-                    int nz = z + dz;
+                    int ny = (int)tempPos.y + dy;
+                    int nx = (int)tempPos.x + dx;
+                    int nz = (int)tempPos.z + dz;
 
                     if (dy == 0 && dx == 0 && dz == 0) continue;
 
                     if (ny < 0 || ny >= numCube || nx < 0 || nx >= numCube || nz < 0 || nz >= numCube) continue;
 
-                    if (esEsquina || EsMismaCapa(y, x, z, ny, nx, nz))
+                    if (esEsquina || EsMismaCapa((int)tempPos.y, (int)tempPos.x, (int)tempPos.z, ny, nx, nz))
                     {
                         CubeLogic vecino = null;
 
-                        if (lista[ny, nx, nz] != null && lista[ny, nx, nz].GetComponent<CubeLogic>() != null)
+                        if (lista[ny, nx, nz] != null)
                         {
                             vecino = lista[ny, nx, nz].GetComponent<CubeLogic>();
-                            if (!vecino.click)
+                            if (!vecino.IAmclick && !vecino.bandera)
                             {
-                                vecino.click = true;
+                                vecino.IAmclick = true;
+                                Click(lista[ny, nx, nz]);
                             }
                         }
                     }

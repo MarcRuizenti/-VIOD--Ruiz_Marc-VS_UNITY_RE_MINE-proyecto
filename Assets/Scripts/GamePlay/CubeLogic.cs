@@ -11,22 +11,7 @@ public class CubeLogic : MonoBehaviour
 
     public Vector3 pos;
     public LogicMap _logicMap;
-    public bool click = false;
     public bool IAmclick = false;
-
-    private void Update()
-    {
-        if (click && !IAmclick && !bandera) 
-        {
-            if (_logicMap != null)
-            {
-                _logicMap.Click(this.gameObject);
-                click = false;
-                IAmclick = true;
-            }
-        }
-        click = false;
-    }
 
     private void OnMouseOver()
     {
@@ -57,8 +42,13 @@ public class CubeLogic : MonoBehaviour
                 }
                 if (!IAmclick && !bandera)
                 {
-                    _logicMap.Click(this.gameObject);
+
                     IAmclick = true;
+                    _logicMap.Click(this.gameObject);
+                    if (GameManager.Instance != null)
+                    {
+                        GameManager.Instance.activeSandClock = false;
+                    }
                 }
 
             }
