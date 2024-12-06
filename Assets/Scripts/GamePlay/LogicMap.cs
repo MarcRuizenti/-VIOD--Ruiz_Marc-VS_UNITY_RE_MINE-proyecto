@@ -14,7 +14,6 @@ public class LogicMap : MonoBehaviour
     [SerializeField] private Material Mina;
     private int numCube = 11;
     private int numMinas = 99;
-    private int cubesActives = 0;
 
     private void OnEnable()
     {

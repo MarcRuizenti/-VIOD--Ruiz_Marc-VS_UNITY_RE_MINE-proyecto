@@ -8,7 +8,7 @@ public class Hability : MonoBehaviour
     public int energy = 0;
     public int maxEnergy = 0;
     public int level = 1;
-    public string name;
+    public string nameHability;
 
     private void Update()
     {

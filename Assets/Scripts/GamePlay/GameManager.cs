@@ -1,11 +1,11 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using TMPro;
-using TMPro.EditorUtilities;
+
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
+
+
 
 public class GameManager : MonoBehaviour
 {
