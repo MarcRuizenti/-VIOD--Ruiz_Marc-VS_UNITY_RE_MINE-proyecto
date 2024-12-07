@@ -64,6 +64,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 23cf4961488f58e4f9093ea22a57451d, type: 2}
+  - {fileID: 2100000, guid: c86bc05777c7da442a43fd1eb4eefc12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,7 +102,6 @@ MonoBehaviour:
   bandera: 0
   pos: {x: 0, y: 0, z: 0}
   _logicMap: {fileID: 0}
-  click: 0
   IAmclick: 0
 --- !u!65 &1488238131599116461
 BoxCollider:
