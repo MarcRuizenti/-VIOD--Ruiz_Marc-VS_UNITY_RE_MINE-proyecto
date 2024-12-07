@@ -48,6 +48,7 @@ public class CubeLogic : MonoBehaviour
                     if (GameManager.Instance != null)
                     {
                         GameManager.Instance.activeSandClock = false;
+                        GameManager.Instance.oneHanilityActive = false;
                     }
                 }
 

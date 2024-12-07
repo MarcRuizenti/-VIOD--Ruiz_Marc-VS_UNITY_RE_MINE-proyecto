@@ -16,7 +16,6 @@ public class SandClock : Hability
 
             energy--;
             isActive = false;
-
         }
     }
 }

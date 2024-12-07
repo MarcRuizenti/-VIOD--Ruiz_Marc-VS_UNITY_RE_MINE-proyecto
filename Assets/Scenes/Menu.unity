@@ -385,7 +385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -0.97491455}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.96875}
   m_SizeDelta: {x: -31.2003, y: -29.2503}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &275489961
@@ -522,7 +522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -0.97491455}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.96875}
   m_SizeDelta: {x: -31.2003, y: -29.2503}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &367056594
@@ -637,6 +637,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 984326180320060655, guid: 31572c6d20706a540b1038a65fbceb60, type: 3}
+      propertyPath: speedRtotation
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7527420768146409296, guid: 31572c6d20706a540b1038a65fbceb60, type: 3}
       propertyPath: m_Name
       value: Tablero
@@ -1621,7 +1625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -0.97491455}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.96875}
   m_SizeDelta: {x: -31.2003, y: -29.2503}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2082713120
@@ -1756,7 +1760,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -0.97491455}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.96875}
   m_SizeDelta: {x: -31.2003, y: -29.2503}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097332612

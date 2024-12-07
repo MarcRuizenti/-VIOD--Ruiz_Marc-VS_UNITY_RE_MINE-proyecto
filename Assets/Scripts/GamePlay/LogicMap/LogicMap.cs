@@ -172,7 +172,7 @@ public class LogicMap : MonoBehaviour
                     {
                         if (lista[ny, nx, nz] != null && lista[ny, nx, nz].GetComponent<CubeLogic>() != null)
                         {
-                            if (lista[ny, nx, nz].GetComponent<CubeLogic>().bandera)
+                            if (lista[ny, nx, nz].GetComponent<CubeLogic>().bandera || lista[ny, nx, nz].GetComponent<Renderer>().sharedMaterial == Mina)
                             {
                                 numBandera++;
                             }
@@ -253,8 +253,18 @@ public class LogicMap : MonoBehaviour
         {
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.Loss();
-                return;
+                if (GameManager.Instance.activeShild)
+                {
+                    GameManager.Instance.activeShild = false;
+                    GameManager.Instance.oneHanilityActive = false;
+                    GameManager.Instance.AddBandera();
+                    return;
+                }
+                else
+                {
+                    GameManager.Instance.Loss();
+                    return;
+                }
             }
             SceneManager.LoadScene("Menu");
             return;

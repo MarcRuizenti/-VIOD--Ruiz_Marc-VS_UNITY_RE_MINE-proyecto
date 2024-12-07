@@ -17,14 +17,17 @@ public class GameManager : MonoBehaviour
     public int numBanderas;
     public int levelnum = 1;
     private bool Iwin;
-    public bool activeSandClock = false;
     public bool canMove = true;
     public bool reset = false;
     public float timer;
     public float timerCounter;
     public int num0;
 
+    [Header("Habilitys")]
     public List<Hability> habilityList;
+    public bool oneHanilityActive = false;
+    public bool activeSandClock = false;
+    public bool activeShild = false;
 
     [Header("UI")]
     public TMP_Text winText;
@@ -51,9 +54,15 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetButtonDown("Fire1") && canMove && habilityList.Count != 0)
+        if (Input.GetButtonDown("Fire1") && canMove && habilityList.Count != 0 && !oneHanilityActive)
         {
             if (habilityList[0].energy != 0) habilityList[0].isActive = true;
+            oneHanilityActive = true;
+        }
+        if (Input.GetButtonDown("Fire2") && canMove && habilityList.Count != 0 && !oneHanilityActive)
+        {
+            if (habilityList[1].energy != 0) habilityList[1].isActive = true;
+            oneHanilityActive = true;
         }
 
         if (timerCounter > 0 && canMove)
