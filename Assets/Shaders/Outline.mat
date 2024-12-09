@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Slected
-  m_Shader: {fileID: -6465566751694194690, guid: 8b126463ccab36044aecf9cdd638e608, type: 3}
+  m_Name: Outline
+  m_Shader: {fileID: -6465566751694194690, guid: dcd800b9e88185247a8d25c8252b65fc, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -27,11 +27,11 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Scale: 1
+    - _Scale: 0.03
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 0.5801887, g: 1, b: 0.95860463, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &3272164252934987480
+--- !u!114 &767508833169121737
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

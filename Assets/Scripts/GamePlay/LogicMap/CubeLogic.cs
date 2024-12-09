@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CubeLogic : MonoBehaviour
 {
     [SerializeField] private Material _bandera;
+    [SerializeField] private Material Outline;
     private Material _default;
     public bool bandera = false;
     private bool posibleBandera = false;
@@ -12,9 +14,77 @@ public class CubeLogic : MonoBehaviour
     public Vector3 pos;
     public LogicMap _logicMap;
     public bool IAmclick = false;
+    private bool iAmSelected = false;
+    public bool callVecino = false;
 
+    private GameObject[] vecinos;
+
+    private void Start()
+    {
+        vecinos = _logicMap.GetVecions(this);
+    }
+
+
+    private void Update()
+    {
+        if (iAmSelected)
+        {
+            if (transform.gameObject.GetComponent<Renderer>().materials.Length == 1)
+            {
+                Material temp = transform.gameObject.GetComponent<Renderer>().material;
+                transform.gameObject.GetComponent<Renderer>().materials = new Material[] { temp, Outline };
+
+                if (!callVecino)
+                {
+                    if (GameManager.Instance != null)
+                    {
+                        if (GameManager.Instance.activeRevelar)
+                        {
+                            for (int i = 0; i < vecinos.Length; i++)
+                            {
+                                if (vecinos[i] != null)
+                                {
+                                    vecinos[i].GetComponent<CubeLogic>().iAmSelected = true;
+                                    vecinos[i].GetComponent<CubeLogic>().callVecino = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        else
+        {
+            if (transform.gameObject.GetComponent<Renderer>().materials.Length == 2)
+            {
+                Material temp = transform.gameObject.GetComponent<Renderer>().material;
+                transform.gameObject.GetComponent<Renderer>().materials = new Material[] { temp };
+                if (!callVecino)
+                {
+                    if (GameManager.Instance != null)
+                    {
+                        if (GameManager.Instance.activeRevelar)
+                        {
+                            for (int i = 0; i < vecinos.Length; i++)
+                            {
+                                if (vecinos[i] != null)
+                                {
+                                    vecinos[i].GetComponent<CubeLogic>().iAmSelected = false;
+                                    vecinos[i].GetComponent<CubeLogic>().callVecino = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     private void OnMouseOver()
     {
+        
+        iAmSelected = true;
+
         if (GameManager.Instance != null)
         {
             if (GameManager.Instance.canMove)
@@ -27,6 +97,11 @@ public class CubeLogic : MonoBehaviour
             DetectClick();
         }
 
+    }
+
+    private void OnMouseExit()
+    {
+        iAmSelected = false;
     }
 
     private void DetectClick()
@@ -47,8 +122,13 @@ public class CubeLogic : MonoBehaviour
                     _logicMap.Click(this.gameObject);
                     if (GameManager.Instance != null)
                     {
-                        GameManager.Instance.activeSandClock = false;
-                        GameManager.Instance.oneHanilityActive = false;
+                        if (GameManager.Instance.activeSandClock)
+                        {
+                            GameManager.Instance.activeSandClock = false;
+                            GameManager.Instance.oneHanilityActive = false;
+                            GameManager.Instance.habilityActive.energy--;
+                            GameManager.Instance.habilityActive = null;
+                        }
                     }
                 }
 

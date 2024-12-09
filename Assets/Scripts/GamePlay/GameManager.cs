@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public bool oneHanilityActive = false;
     public bool activeSandClock = false;
     public bool activeShild = false;
+    public bool activeRevelar = false;
+    public Hability habilityActive = null;
 
     [Header("UI")]
     public TMP_Text winText;
@@ -54,15 +56,50 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetButtonDown("Fire1") && canMove && habilityList.Count != 0 && !oneHanilityActive)
+        if (Input.GetButtonDown("Fire1") && canMove && habilityList.Count != 0 )
         {
-            if (habilityList[0].energy != 0) habilityList[0].isActive = true;
-            oneHanilityActive = true;
+            if (!oneHanilityActive && !habilityList[0].isActive)
+            {
+                if (habilityList[0].energy != 0) habilityList[0].ActiveAbility();
+                oneHanilityActive = true;
+                habilityActive = habilityList[0];
+            }
+            else
+            {
+                habilityList[0].DesActiveAbility();
+                oneHanilityActive = false;
+                habilityActive = null;
+            }
         }
-        if (Input.GetButtonDown("Fire2") && canMove && habilityList.Count != 0 && !oneHanilityActive)
+        if (Input.GetButtonDown("Fire2") && canMove && habilityList.Count > 0)
         {
-            if (habilityList[1].energy != 0) habilityList[1].isActive = true;
-            oneHanilityActive = true;
+            if (!oneHanilityActive && !habilityList[1].isActive)
+            {
+                if (habilityList[1].energy != 0) habilityList[1].ActiveAbility();
+                oneHanilityActive = true;
+                habilityActive = habilityList[1];
+            }
+            else
+            {
+                habilityList[1].DesActiveAbility();
+                oneHanilityActive = false;
+                habilityActive = null;
+            }
+        }
+        if (Input.GetButtonDown("Fire3") && canMove && habilityList.Count > 1)
+        {
+            if (!oneHanilityActive && !habilityList[2].isActive)
+            {
+                if (habilityList[2].energy != 0) habilityList[2].ActiveAbility();
+                oneHanilityActive = true;
+                habilityActive = habilityList[2];
+            }
+            else
+            {
+                habilityList[2].DesActiveAbility();
+                oneHanilityActive = false;
+                habilityActive = null;
+            }
         }
 
         if (timerCounter > 0 && canMove)

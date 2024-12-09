@@ -5,14 +5,21 @@ using UnityEngine;
 public class Shild : Hability
 {
 
-    override public void UseAbility()
+    override public void ActiveAbility()
     {
+        base.ActiveAbility();
         if (GameManager.Instance != null)
         {
             GameManager.Instance.activeShild = true;
+        }
+    }
 
-            energy--;
-            isActive = false;
+    public override void DesActiveAbility()
+    {
+        base.DesActiveAbility();
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.activeShild = false;
         }
     }
 }

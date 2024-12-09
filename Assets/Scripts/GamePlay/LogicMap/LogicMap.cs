@@ -257,6 +257,8 @@ public class LogicMap : MonoBehaviour
                 {
                     GameManager.Instance.activeShild = false;
                     GameManager.Instance.oneHanilityActive = false;
+                    GameManager.Instance.habilityActive.energy--;
+                    GameManager.Instance.habilityActive = null;
                     GameManager.Instance.AddBandera();
                     return;
                 }
@@ -398,6 +400,45 @@ public class LogicMap : MonoBehaviour
 
         return numVecinosConMina;
     }
+
+    public GameObject[] GetVecions(CubeLogic cube)
+    {
+        GameObject[] temp = new GameObject[8];
+
+        Vector3 tempPos = cube.GetComponent<CubeLogic>().pos;
+
+        bool esEsquina = Esquina((int)tempPos.y, (int)tempPos.x, (int)tempPos.z);
+        int contador = 0;
+
+        for (int dy = -1; dy <= 1; dy++)
+        {
+            for (int dx = -1; dx <= 1; dx++)
+            {
+                for (int dz = -1; dz <= 1; dz++)
+                {
+                    int ny = (int)tempPos.y + dy;
+                    int nx = (int)tempPos.x + dx;
+                    int nz = (int)tempPos.z + dz;
+
+                    if (dy == 0 && dx == 0 && dz == 0) continue;
+
+                    if (ny < 0 || ny >= numCube || nx < 0 || nx >= numCube || nz < 0 || nz >= numCube) continue;
+
+                    if (esEsquina || EsMismaCapa((int)tempPos.y, (int)tempPos.x, (int)tempPos.z, ny, nx, nz))
+                    {
+                        if (lista[ny, nx, nz] != null && lista[ny, nx, nz].GetComponent<CubeLogic>() != null)
+                        {
+
+                            temp[contador] = lista[ny, nx, nz];
+                            contador++;
+                        }
+                    }
+                }
+            }
+        }
+        return temp;
+    }
+
     public bool esExterna(int y, int x, int z)
     {
         return y == 0 || y == numCube - 1 ||
@@ -410,7 +451,7 @@ public class LogicMap : MonoBehaviour
                (x == 0 || x == numCube - 1) &&
                (z == 0 || z == numCube - 1);
     }
-    private bool EsMismaCapa(int y, int x, int z, int ny, int nx, int nz)
+    public bool EsMismaCapa(int y, int x, int z, int ny, int nx, int nz)
     {
         return (y == 0 || y == numCube - 1) && ny == y || 
                (x == 0 || x == numCube - 1) && nx == x || 

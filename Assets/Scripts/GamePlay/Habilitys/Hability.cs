@@ -10,17 +10,14 @@ public class Hability : MonoBehaviour
     public int level = 1;
     public string nameHability;
 
-    private void Update()
+    virtual public void ActiveAbility()
     {
-        if (isActive)
-        {
-            UseAbility();
-        }
+        isActive = true;
     }
 
-    virtual public void UseAbility()
+    virtual public void DesActiveAbility()
     {
-
+        isActive = false;
     }
 
 }
