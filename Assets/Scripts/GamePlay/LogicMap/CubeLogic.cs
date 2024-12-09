@@ -17,6 +17,8 @@ public class CubeLogic : MonoBehaviour
     private bool iAmSelected = false;
     public bool callVecino = false;
 
+    public int numCube;
+
     private GameObject[] vecinos;
 
     private void Start()
@@ -64,7 +66,7 @@ public class CubeLogic : MonoBehaviour
                 {
                     if (GameManager.Instance != null)
                     {
-                        if (GameManager.Instance.activeRevelar)
+                        if (GameManager.Instance.activeRevelar || vecinos[0].GetComponent<Renderer>().materials.Length == 2)
                         {
                             for (int i = 0; i < vecinos.Length; i++)
                             {

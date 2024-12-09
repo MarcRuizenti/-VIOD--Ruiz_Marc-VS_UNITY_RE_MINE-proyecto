@@ -132,17 +132,7 @@ public class LogicMap : MonoBehaviour
 
     public int numMatirial(GameObject cube)
     {
-        int numMatirial = 0;
-
-        Material matirial = cube.GetComponent<Renderer>().sharedMaterial;
-
-        for (int i = 0; i < numeroMinas.Count; i++)
-        {
-            if (matirial == numeroMinas[i])
-            {
-                numMatirial = i; 
-            }
-        }
+        int numMatirial = cube.GetComponent<CubeLogic>().numCube;
 
         return numMatirial;
     }
@@ -181,7 +171,7 @@ public class LogicMap : MonoBehaviour
                 }
             }
         }
-
+        Debug.Log(numBandera + " Bandera");
         return numBandera;
     }
     public void dobelClick(GameObject cube)
@@ -200,6 +190,7 @@ public class LogicMap : MonoBehaviour
 
         int numBandera = numBanderasCube(cube);
         int numMinas = numMatirial(cube);
+
         if (numMinas == numBandera)
         {
             bool esEsquina = Esquina((int)tempPos.y, (int)tempPos.x, (int)tempPos.z);
@@ -331,6 +322,7 @@ public class LogicMap : MonoBehaviour
                     if (numVecinosConMina >= 0 && numVecinosConMina < numeroMinas.Count)
                     {
                         listaMeriales[y, x, z] = numeroMinas[numVecinosConMina];
+                        lista[y, x, z].GetComponent<CubeLogic>().numCube = numVecinosConMina;
                     }
                 }
             }
@@ -351,6 +343,10 @@ public class LogicMap : MonoBehaviour
 
                     if (listaMinas[y, x, z])
                     {
+                        if (lista[y, x, z].GetComponent<CubeLogic>().IAmclick)
+                        {
+                            continue;
+                        }
                         if (!lista[y, x, z].GetComponent<CubeLogic>().bandera)
                         {
                             win = false; break;
