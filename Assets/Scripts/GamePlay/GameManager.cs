@@ -58,47 +58,93 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && canMove && habilityList.Count != 0 )
         {
-            if (!oneHanilityActive && !habilityList[0].isActive)
+            if (!oneHanilityActive)
             {
-                if (habilityList[0].energy != 0) habilityList[0].ActiveAbility();
-                oneHanilityActive = true;
-                habilityActive = habilityList[0];
+                if (habilityList[0].energy != 0)
+                {
+                    habilityList[0].ActiveAbility();
+                    oneHanilityActive = true;
+                    habilityActive = habilityList[0];
+                }
             }
             else
             {
-                habilityList[0].DesActiveAbility();
-                oneHanilityActive = false;
-                habilityActive = null;
+                if (!habilityList[0].isActive)
+                {
+                    if (habilityList[0].energy != 0)
+                    {
+                        habilityActive.DesActiveAbility();
+                        habilityList[0].ActiveAbility();
+                        habilityActive = habilityList[0];
+                    }
+                }
+                else
+                {
+                    habilityActive.DesActiveAbility();
+                    habilityActive = null;
+                    oneHanilityActive = false;
+                }
             }
         }
         if (Input.GetButtonDown("Fire2") && canMove && habilityList.Count > 0)
         {
-            if (!oneHanilityActive && !habilityList[1].isActive)
+            if (!oneHanilityActive)
             {
-                if (habilityList[1].energy != 0) habilityList[1].ActiveAbility();
-                oneHanilityActive = true;
-                habilityActive = habilityList[1];
+                if (habilityList[1].energy != 0)
+                {
+                    habilityList[1].ActiveAbility();
+                    oneHanilityActive = true;
+                    habilityActive = habilityList[1];
+                }
             }
             else
             {
-                habilityList[1].DesActiveAbility();
-                oneHanilityActive = false;
-                habilityActive = null;
+                if (!habilityList[1].isActive)
+                {
+                    if (habilityList[1].energy != 0)
+                    {
+                        habilityActive.DesActiveAbility();
+
+                        habilityList[1].ActiveAbility();
+                        habilityActive = habilityList[1];
+                    }
+                }
+                else
+                {
+                    habilityActive.DesActiveAbility();
+                    habilityActive = null;
+                    oneHanilityActive = false;
+                }
             }
         }
         if (Input.GetButtonDown("Fire3") && canMove && habilityList.Count > 1)
         {
-            if (!oneHanilityActive && !habilityList[2].isActive)
+            if (!oneHanilityActive)
             {
-                if (habilityList[2].energy != 0) habilityList[2].ActiveAbility();
-                oneHanilityActive = true;
-                habilityActive = habilityList[2];
+                if (habilityList[2].energy != 0)
+                {
+                    habilityList[2].ActiveAbility();
+                    oneHanilityActive = true;
+                    habilityActive = habilityList[2];
+                }
             }
             else
             {
-                habilityList[2].DesActiveAbility();
-                oneHanilityActive = false;
-                habilityActive = null;
+                if (!habilityList[2].isActive)
+                {
+                    if (habilityList[2].energy != 0)
+                    {
+                        habilityActive.DesActiveAbility();
+                        habilityList[2].ActiveAbility();
+                        habilityActive = habilityList[2];
+                    }
+                }
+                else
+                {
+                    habilityActive.DesActiveAbility();
+                    habilityActive = null;
+                    oneHanilityActive = false;
+                }
             }
         }
 
