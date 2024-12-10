@@ -171,7 +171,6 @@ public class LogicMap : MonoBehaviour
                 }
             }
         }
-        Debug.Log(numBandera + " Bandera");
         return numBandera;
     }
     public void dobelClick(GameObject cube)
@@ -247,6 +246,7 @@ public class LogicMap : MonoBehaviour
                 if (GameManager.Instance.activeShild)
                 {
                     GameManager.Instance.activeShild = false;
+                    GameManager.Instance.habilityActive.DesActiveAbility();
                     GameManager.Instance.oneHanilityActive = false;
                     GameManager.Instance.habilityActive.energy--;
                     GameManager.Instance.habilityActive = null;

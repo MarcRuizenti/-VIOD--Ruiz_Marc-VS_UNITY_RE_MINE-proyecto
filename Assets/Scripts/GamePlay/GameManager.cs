@@ -104,7 +104,6 @@ public class GameManager : MonoBehaviour
                     if (habilityList[1].energy != 0)
                     {
                         habilityActive.DesActiveAbility();
-
                         habilityList[1].ActiveAbility();
                         habilityActive = habilityList[1];
                     }
@@ -183,7 +182,6 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         canMove = false;
-        numBanderas = 0;
         ChangeUIWin(true);
         Iwin = true;
     }
@@ -217,13 +215,14 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLevel()
     {
+        numBanderas = 0;
         levelnum++;
         if (levelnum % 10 == 0)
         {
             numCube++;
-            numMinas += levelnum;
             timer += 60;
         }
+        numMinas += 1;
         timerCounter = timer;
         canMove = true;
         reset = true;

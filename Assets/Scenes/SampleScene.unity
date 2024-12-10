@@ -1068,6 +1068,7 @@ MonoBehaviour:
   - {fileID: 595496893}
   - {fileID: 541077436}
   - {fileID: 1466851345}
+  defaultColor: {r: 1, g: 1, b: 1, a: 0.3137255}
 --- !u!1 &577083248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.24705882}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1827,6 +1828,7 @@ MonoBehaviour:
   maxEnergy: 3
   level: 1
   nameHability: 
+  color: {r: 1, g: 0.3823665, b: 0, a: 0.5882353}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4476,6 +4478,7 @@ MonoBehaviour:
   maxEnergy: 3
   level: 1
   nameHability: 
+  color: {r: 1, g: 0.0097919665, b: 0, a: 0.41960785}
 --- !u!4 &1560818450
 Transform:
   m_ObjectHideFlags: 0
@@ -5405,6 +5408,7 @@ MonoBehaviour:
   maxEnergy: 3
   level: 1
   nameHability: 
+  color: {r: 0.039443493, g: 0, b: 1, a: 0.38431373}
 --- !u!1 &1996499808
 GameObject:
   m_ObjectHideFlags: 0
@@ -6037,7 +6041,7 @@ PrefabInstance:
       objectReference: {fileID: 1453192745}
     - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: numCube
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: winText
@@ -6057,7 +6061,7 @@ PrefabInstance:
       objectReference: {fileID: 1125017646}
     - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: numMinas
-      value: 10
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: levelText

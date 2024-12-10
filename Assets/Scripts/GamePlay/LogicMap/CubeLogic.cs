@@ -129,6 +129,15 @@ public class CubeLogic : MonoBehaviour
                             GameManager.Instance.activeSandClock = false;
                             GameManager.Instance.oneHanilityActive = false;
                             GameManager.Instance.habilityActive.energy--;
+                            GameManager.Instance.habilityActive.DesActiveAbility();
+                            GameManager.Instance.habilityActive = null;
+                        }
+                        else if (GameManager.Instance.activeShild) 
+                        {
+                            GameManager.Instance.activeShild = false;
+                            GameManager.Instance.habilityActive.DesActiveAbility();
+                            GameManager.Instance.oneHanilityActive = false;
+                            GameManager.Instance.habilityActive.energy--;
                             GameManager.Instance.habilityActive = null;
                         }
                     }

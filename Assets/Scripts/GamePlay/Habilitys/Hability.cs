@@ -10,6 +10,8 @@ public class Hability : MonoBehaviour
     public int level = 1;
     public string nameHability;
 
+    public Color color;
+
     virtual public void ActiveAbility()
     {
         isActive = true;
