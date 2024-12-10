@@ -7,7 +7,7 @@ public class Revelar : Hability
 {
     private void Start()
     {
-        name = "Open More";
+        name = "Look";
     }
     override public void ActiveAbility()
     {
