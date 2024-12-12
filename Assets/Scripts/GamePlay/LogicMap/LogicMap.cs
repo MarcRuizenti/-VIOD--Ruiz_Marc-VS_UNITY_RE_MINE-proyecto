@@ -232,7 +232,7 @@ public class LogicMap : MonoBehaviour
     public void Click(GameObject cube)
     {
         if (!cube.GetComponent<CubeLogic>().IAmclick) return;
-
+        cube.GetComponent<CubeLogic>().DestroyMiniCube();
         Vector3 tempPos = cube.GetComponent<CubeLogic>().pos;
 
         Material temp = listaMeriales[(int)tempPos.y, (int)tempPos.x, (int)tempPos.z];
@@ -452,5 +452,11 @@ public class LogicMap : MonoBehaviour
         return (y == 0 || y == numCube - 1) && ny == y || 
                (x == 0 || x == numCube - 1) && nx == x || 
                (z == 0 || z == numCube - 1) && nz == z;
+    }
+
+    public Material GiveMatirial(GameObject cube)
+    {
+        Vector3 tempPos = cube.GetComponent<CubeLogic>().pos;
+        return listaMeriales[(int)tempPos.y, (int)tempPos.x, (int)tempPos.z];
     }
 }

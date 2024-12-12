@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class CubeLogic : MonoBehaviour
 {
+    [Header("Observ")]
+    [SerializeField] private Material _defaultTransparent;
+    [SerializeField] private GameObject _miniCubePrefab;
+    private GameObject _miniCube;
+    private bool IAmTransparent = false;
+
+    [Header("Logic")]
     [SerializeField] private Material _bandera;
     [SerializeField] private Material Outline;
     private Material _default;
@@ -16,7 +23,6 @@ public class CubeLogic : MonoBehaviour
     public bool IAmclick = false;
     private bool iAmSelected = false;
     public bool callVecino = false;
-
     public int numCube;
 
     private GameObject[] vecinos;
@@ -40,7 +46,7 @@ public class CubeLogic : MonoBehaviour
                 {
                     if (GameManager.Instance != null)
                     {
-                        if (GameManager.Instance.activeRevelar)
+                        if (GameManager.Instance.activeRevelar && GameManager.Instance.habilityActive.level == 2)
                         {
                             for (int i = 0; i < vecinos.Length; i++)
                             {
@@ -66,7 +72,7 @@ public class CubeLogic : MonoBehaviour
                 {
                     if (GameManager.Instance != null)
                     {
-                        if (GameManager.Instance.activeRevelar || vecinos[0].GetComponent<Renderer>().materials.Length == 2)
+                        if ((GameManager.Instance.activeRevelar && GameManager.Instance.habilityActive.level == 2 )|| vecinos[0].GetComponent<Renderer>().materials.Length == 2)
                         {
                             for (int i = 0; i < vecinos.Length; i++)
                             {
@@ -119,7 +125,28 @@ public class CubeLogic : MonoBehaviour
                 }
                 if (!IAmclick && !bandera)
                 {
+                    if (GameManager.Instance != null)
+                    {
+                        if (GameManager.Instance.activeRevelar && !IAmTransparent)
+                        {
+                            Transparent();
 
+                            if (GameManager.Instance.habilityActive.level == 2)
+                            {
+                                for (int i = 0; i < vecinos.Length; i++)
+                                {
+                                    if (vecinos[i] != null)
+                                    {
+                                        vecinos[i].GetComponent<CubeLogic>().Transparent();
+                                    }
+                                }
+                            }
+
+                            GameManager.Instance.activeRevelar = false;
+                            GameManager.Instance.DesactiveAbility();
+                            return;
+                        }
+                    }
                     IAmclick = true;
                     _logicMap.Click(this.gameObject);
                     if (GameManager.Instance != null)
@@ -127,20 +154,15 @@ public class CubeLogic : MonoBehaviour
                         if (GameManager.Instance.activeSandClock)
                         {
                             GameManager.Instance.activeSandClock = false;
-                            GameManager.Instance.oneHanilityActive = false;
-                            GameManager.Instance.habilityActive.energy--;
-                            GameManager.Instance.habilityActive.DesActiveAbility();
-                            GameManager.Instance.habilityActive = null;
+                            GameManager.Instance.DesactiveAbility();
                         }
                         else if (GameManager.Instance.activeShild) 
                         {
                             GameManager.Instance.activeShild = false;
-                            GameManager.Instance.habilityActive.DesActiveAbility();
-                            GameManager.Instance.oneHanilityActive = false;
-                            GameManager.Instance.habilityActive.energy--;
-                            GameManager.Instance.habilityActive = null;
+                            GameManager.Instance.DesactiveAbility();
                         }
                     }
+                    DestroyMiniCube();
                 }
 
             }
@@ -173,4 +195,25 @@ public class CubeLogic : MonoBehaviour
             }
         }
     }
+
+    private void Transparent()
+    {
+        transform.GetComponent<Renderer>().material = _defaultTransparent;
+        GameObject temp = Instantiate(_miniCubePrefab, transform.position, transform.rotation);
+
+        temp.GetComponent<Renderer>().material = _logicMap.GiveMatirial(this.gameObject);
+
+        _miniCube = temp;
+
+        IAmTransparent = true;
+    }
+
+    public void DestroyMiniCube()
+    {
+        if (IAmTransparent)
+        {
+            Destroy(_miniCube);
+        }
+    }
+    
 }

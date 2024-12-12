@@ -5,10 +5,6 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class Revelar : Hability
 {
-    private void Start()
-    {
-        name = "Look";
-    }
     override public void ActiveAbility()
     {
         base.ActiveAbility();

@@ -27,7 +27,7 @@ public class UIHablityManager : MonoBehaviour
                 if (i < num)
                 {
                     panels[i].SetActive(true);
-                    nameH[i].text = GameManager.Instance.habilityList[i].name;
+                    nameH[i].text = GameManager.Instance.habilityList[i].nameHability;
                     level[i].text = GameManager.Instance.habilityList[i].level.ToString();
                     energy[i].text = GameManager.Instance.habilityList[i].energy.ToString();
                     maxEnergy[i].text = GameManager.Instance.habilityList[i].maxEnergy.ToString();

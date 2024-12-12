@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class SandClock : Hability
 {
-    private void Start()
-    {
-        name = "Sand Clock";
-    }
     override public void ActiveAbility()
     {
         base.ActiveAbility();

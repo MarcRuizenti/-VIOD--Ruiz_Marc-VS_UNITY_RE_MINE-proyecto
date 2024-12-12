@@ -9,6 +9,7 @@ public class Hability : MonoBehaviour
     public int maxEnergy = 0;
     public int level = 1;
     public string nameHability;
+    public string description;
 
     public Color color;
 

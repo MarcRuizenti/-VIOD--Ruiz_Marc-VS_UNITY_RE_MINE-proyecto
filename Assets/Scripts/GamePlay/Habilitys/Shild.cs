@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Shild : Hability
 {
-    private void Start()
-    {
-        name = "Shild";
-    }
     override public void ActiveAbility()
     {
         base.ActiveAbility();

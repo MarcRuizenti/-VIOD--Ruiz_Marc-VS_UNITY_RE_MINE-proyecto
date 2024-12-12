@@ -29,7 +29,7 @@ public class RotateMape : MonoBehaviour
     private void Rotate()
     {
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(2))
         {
             RaycastHit hit;
 
@@ -43,7 +43,7 @@ public class RotateMape : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(2))
         {
             rigtClickDown = false;
         }

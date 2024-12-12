@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public float timer;
     public float timerCounter;
     public int num0;
+    public bool selectionAbility = false;
 
     [Header("Habilitys")]
     public List<Hability> habilityList;
@@ -30,8 +31,11 @@ public class GameManager : MonoBehaviour
     public bool activeShild = false;
     public bool activeRevelar = false;
     public Hability habilityActive = null;
+    [SerializeField] private GameObject abilityManager;
+
 
     [Header("UI")]
+    [SerializeField] private Canvas canvasGamePlay;
     public TMP_Text winText;
     public TMP_Text lossText;
     public TMP_Text timerText;
@@ -44,6 +48,7 @@ public class GameManager : MonoBehaviour
     public Button menuWin;
 
     public static GameManager Instance;
+
 
     private void Awake()
     {
@@ -60,11 +65,11 @@ public class GameManager : MonoBehaviour
         {
             AbilityLogicActivate(0);
         }
-        if (Input.GetButtonDown("Fire2") && canMove && habilityList.Count > 0)
+        if (Input.GetButtonDown("Fire2") && canMove && habilityList.Count > 1)
         {
             AbilityLogicActivate(1);
         }
-        if (Input.GetButtonDown("Fire3") && canMove && habilityList.Count > 1)
+        if (Input.GetButtonDown("Fire3") && canMove && habilityList.Count > 2)
         {
             AbilityLogicActivate(2);
         }
@@ -135,8 +140,16 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         canMove = false;
-        ChangeUIWin(true);
         Iwin = true;
+        int temp = levelnum + 1;
+        if (temp % 5 == 0 && !selectionAbility)
+        {
+            numCube++;
+            timer += 60;
+            ActiveSelectionAbilitisCanvas();
+            return;
+        }
+        ChangeUIWin(true);
     }
 
     public void Loss()
@@ -168,18 +181,22 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLevel()
     {
-        numBanderas = 0;
         levelnum++;
-        if (levelnum % 10 == 0)
-        {
-            numCube++;
-            timer += 60;
-        }
+        numBanderas = 0;
         numMinas += 1;
         timerCounter = timer;
         canMove = true;
         reset = true;
-        ChangeUIWin(false);
+        if (selectionAbility)
+        {
+            canvasGamePlay.gameObject.SetActive(true);
+            abilityManager.SetActive(false);
+            selectionAbility = false;
+        }
+        else
+        {
+            ChangeUIWin(false);
+        }
 
     }
 
@@ -197,5 +214,21 @@ public class GameManager : MonoBehaviour
             ChangeUILoss(false);
         }
         canMove = true;
+    }
+
+    public void DesactiveAbility()
+    {
+        oneHanilityActive = false;
+        habilityActive.energy--;
+        habilityActive.DesActiveAbility();
+        habilityActive = null;
+    }
+
+    public void ActiveSelectionAbilitisCanvas()
+    {
+        selectionAbility = true;
+        canvasGamePlay.gameObject.SetActive(false);
+        abilityManager.SetActive(true);
+        abilityManager.GetComponent<AbilityManager>().ActiveSelectionAbilitys();
     }
 }

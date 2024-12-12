@@ -87,7 +87,10 @@ public class SpawnTablero : MonoBehaviour
             {
                 if (_logicMap.checkWin())
                 {
-                    GameManager.Instance.Win();
+                    if (GameManager.Instance.canMove)
+                    {
+                        GameManager.Instance.Win();
+                    }
                 }
             }
 
