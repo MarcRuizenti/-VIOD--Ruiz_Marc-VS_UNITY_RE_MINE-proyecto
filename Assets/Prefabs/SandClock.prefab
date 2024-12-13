@@ -50,4 +50,6 @@ MonoBehaviour:
   level: 1
   nameHability: Sand Clock
   description: Suma el numero de cubos vacios al timepo
+  numCopis: 0
+  numCopisLevelUp: 0100000002000000
   color: {r: 1, g: 0.0097919665, b: 0, a: 0.41960785}

@@ -50,4 +50,6 @@ MonoBehaviour:
   level: 1
   nameHability: Observer
   description: Mira que hay debajo
+  numCopis: 0
+  numCopisLevelUp: 0200000002000000
   color: {r: 1, g: 0.3823665, b: 0, a: 0.5882353}

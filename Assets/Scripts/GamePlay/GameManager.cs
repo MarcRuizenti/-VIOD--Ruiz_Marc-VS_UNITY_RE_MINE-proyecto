@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         canMove = false;
         Iwin = true;
         int temp = levelnum + 1;
-        if (temp % 5 == 0 && !selectionAbility)
+        if (temp % 2 == 0 && !selectionAbility)
         {
             numCube++;
             timer += 60;
@@ -183,8 +183,8 @@ public class GameManager : MonoBehaviour
     {
         levelnum++;
         numBanderas = 0;
-        numMinas += 1;
-        timerCounter = timer;
+        numMinas += 3;
+        timerCounter = timer + timerCounter;
         canMove = true;
         reset = true;
         if (selectionAbility)

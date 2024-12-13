@@ -41,6 +41,7 @@ public class AbilityManager : MonoBehaviour
                 names[i].text = abilitys[a1].GetComponent<Hability>().nameHability;
                 energys[i].text = abilitys[a1].GetComponent<Hability>().energy.ToString();
                 description[i].text = abilitys[a1].GetComponent<Hability>().description;
+
             }
             if (i == 1)
             {
@@ -53,20 +54,59 @@ public class AbilityManager : MonoBehaviour
 
     public void SelectAbility1()
     {
-        if (GameManager.Instance.habilityList.Count < 3)
+        bool have = false;
+        int numAnility = 0;
+        Hability temp = Instantiate(abilitys[a1]).GetComponent<Hability>();
+
+        for (int i = 0; i < GameManager.Instance.habilityList.Count; i++)
         {
-            Hability temp = Instantiate(abilitys[a1]).GetComponent<Hability>();
+            if (GameManager.Instance.habilityList[i].nameHability == temp.nameHability)
+            {
+                have = true;
+                numAnility = i;
+                break;
+            }
+        }
+
+        if (!have)
+        {
             GameManager.Instance.habilityList.Add(temp);
             GameManager.Instance.ChangeLevel();
         }
+        else
+        {
+            Destroy(temp);
+            GameManager.Instance.habilityList[numAnility].LevelUp();
+            GameManager.Instance.ChangeLevel();
+        }
+
     }
 
     public void SelectAbility2()
     {
-        if (GameManager.Instance.habilityList.Count < 3)
+        bool have = false;
+        int numAnility = 0;
+        Hability temp = Instantiate(abilitys[a2]).GetComponent<Hability>();
+
+        for (int i = 0; i < GameManager.Instance.habilityList.Count; i++)
         {
-            Hability temp = Instantiate(abilitys[a2]).GetComponent<Hability>();
+            if (GameManager.Instance.habilityList[i].nameHability == temp.nameHability)
+            {
+                have = true;
+                numAnility = i;
+                break;
+            }
+        }
+
+        if (!have)
+        {
             GameManager.Instance.habilityList.Add(temp);
+            GameManager.Instance.ChangeLevel();
+        }
+        else
+        {
+            Destroy(temp.gameObject);
+            GameManager.Instance.habilityList[numAnility].LevelUp();
             GameManager.Instance.ChangeLevel();
         }
     }

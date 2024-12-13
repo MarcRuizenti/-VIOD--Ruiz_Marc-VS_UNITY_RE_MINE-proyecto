@@ -10,6 +10,8 @@ public class Hability : MonoBehaviour
     public int level = 1;
     public string nameHability;
     public string description;
+    public int numCopis = 0;
+    public int[] numCopisLevelUp;
 
     public Color color;
 
@@ -23,4 +25,26 @@ public class Hability : MonoBehaviour
         isActive = false;
     }
 
+    virtual public void LevelUp()
+    {
+        if (numCopisLevelUp.Length >= level)
+        {
+            numCopis++;
+            if (numCopisLevelUp[level - 1] == numCopis)
+            {
+                level++;
+                numCopis = 0;
+                energy = maxEnergy;
+            }
+        }
+    }
+
+    public void AddEnergy()
+    {
+        if (energy + 1 <= maxEnergy)
+        {
+            energy++;
+            GameManager.Instance.timerCounter -= 60;
+        }
+    }
 }

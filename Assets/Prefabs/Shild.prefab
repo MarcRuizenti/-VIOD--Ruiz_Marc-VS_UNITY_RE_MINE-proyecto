@@ -50,4 +50,6 @@ MonoBehaviour:
   level: 1
   nameHability: Shield
   description: No pierdes al revelar una mina
+  numCopis: 0
+  numCopisLevelUp: 0100000002000000
   color: {r: 0.039443493, g: 0, b: 1, a: 0.38431373}
