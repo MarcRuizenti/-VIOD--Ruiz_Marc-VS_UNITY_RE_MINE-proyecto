@@ -23,8 +23,9 @@ public class GameManager : MonoBehaviour
     public float timerCounter;
     public int num0;
     public bool selectionAbility = false;
+    public int pointsXp;
 
-    [Header("Habilitys")]
+    [Header("Abilitys")]
     public List<Hability> habilityList;
     public bool oneHanilityActive = false;
     public bool activeSandClock = false;
@@ -33,6 +34,9 @@ public class GameManager : MonoBehaviour
     public Hability habilityActive = null;
     [SerializeField] private GameObject abilityManager;
 
+    [Header("AbilityTree")]
+
+    [SerializeField] private Canvas abilityTree;
 
     [Header("UI")]
     [SerializeField] private Canvas canvasGamePlay;
@@ -72,6 +76,22 @@ public class GameManager : MonoBehaviour
         if (Input.GetButtonDown("Fire3") && canMove && habilityList.Count > 2)
         {
             AbilityLogicActivate(2);
+        }
+
+        if (Input.GetButtonDown("Q"))
+        {
+            if (canMove)
+            {
+                canMove = false;
+                abilityTree.gameObject.SetActive(true);
+                canvasGamePlay.gameObject.SetActive(false);
+            }
+            else
+            {
+                canMove = true;
+                abilityTree.gameObject.SetActive(false);
+                canvasGamePlay.gameObject.SetActive(true);
+            }
         }
 
         if (timerCounter > 0 && canMove)
