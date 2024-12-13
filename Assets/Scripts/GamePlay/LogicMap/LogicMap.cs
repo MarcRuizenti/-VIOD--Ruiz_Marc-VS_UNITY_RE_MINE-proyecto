@@ -251,6 +251,7 @@ public class LogicMap : MonoBehaviour
                     GameManager.Instance.habilityActive.energy--;
                     GameManager.Instance.habilityActive = null;
                     GameManager.Instance.AddBandera();
+                    cube.GetComponent<CubeLogic>().IAmclick = true;
                     return;
                 }
                 else
@@ -263,6 +264,7 @@ public class LogicMap : MonoBehaviour
                             {
                                 GameManager.Instance.heartLive[2] = false;
                                 GameManager.Instance.AddBandera();
+                                cube.GetComponent<CubeLogic>().IAmclick = true;
                                 return;
                             }
                         }
@@ -272,6 +274,7 @@ public class LogicMap : MonoBehaviour
                             {
                                 GameManager.Instance.heartLive[1] = false;
                                 GameManager.Instance.AddBandera();
+                                cube.GetComponent<CubeLogic>().IAmclick = true;
                                 return;
                             }
                         }
@@ -279,6 +282,7 @@ public class LogicMap : MonoBehaviour
                         {
                             GameManager.Instance.heartLive[0] = false;
                             GameManager.Instance.AddBandera();
+                            cube.GetComponent<CubeLogic>().IAmclick = true;
                             return;
                         }
                     }

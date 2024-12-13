@@ -13,6 +13,7 @@ public class Hability : MonoBehaviour
     public int numCopis = 0;
     public int[] numCopisLevelUp;
 
+
     public Color color;
 
     virtual public void ActiveAbility()

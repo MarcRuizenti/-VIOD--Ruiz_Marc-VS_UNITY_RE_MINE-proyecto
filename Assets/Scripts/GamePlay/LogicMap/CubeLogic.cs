@@ -35,7 +35,7 @@ public class CubeLogic : MonoBehaviour
 
     private void Update()
     {
-        if (iAmSelected)
+        if (iAmSelected && (GameManager.Instance != null ? GameManager.Instance.canMove : true))
         {
             if (!IAmclick)
             {
