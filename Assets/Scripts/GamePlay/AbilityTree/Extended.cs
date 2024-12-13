@@ -11,6 +11,14 @@ public class Extended : MonoBehaviour
     [SerializeField] private TMP_Text descriptionText;
 
     private AbilityTreeAblity abilitySelected;
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Desactive();
+        }
+    }
     public void Active(AbilityTreeAblity ability) 
     {
         nameAblityText.text = ability.nameAblity;
@@ -19,15 +27,6 @@ public class Extended : MonoBehaviour
 
         abilitySelected = ability;
     }
-
-    private void OnMouseOver()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Desactive();
-        }
-    }
-
     public void ActiveAblity()
     {
         abilitySelected.ActiveAblity();

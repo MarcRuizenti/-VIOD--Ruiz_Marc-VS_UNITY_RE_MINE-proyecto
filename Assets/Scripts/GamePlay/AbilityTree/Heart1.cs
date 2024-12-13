@@ -8,7 +8,35 @@ public class Heart1 : AbilityTreeAblity
 
     override public void ActiveAblity()
     {
-        base.ActiveAblity();
-        GameManager.Instance.heartsActive[numHeart] = true;
+        if (!IamActive)
+        {
+            if (numHeart == 0)
+            {
+                base.ActiveAblity();
+                GameManager.Instance.heartsActive[numHeart] = true;
+                IamActive = true;
+                return;
+            }
+            if (numHeart == 1)
+            {
+                if (GameManager.Instance.heartsActive[0])
+                {
+                    base.ActiveAblity();
+                    GameManager.Instance.heartsActive[numHeart] = true;
+                    IamActive = true;
+                    return;
+                }
+            }
+            if (numHeart == 2)
+            {
+                if (GameManager.Instance.heartsActive[1])
+                {
+                    base.ActiveAblity();
+                    GameManager.Instance.heartsActive[numHeart] = true;
+                    IamActive = true;
+                    return;
+                }
+            }
+        }
     }
 }

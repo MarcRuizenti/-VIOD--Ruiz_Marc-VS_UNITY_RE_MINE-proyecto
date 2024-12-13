@@ -8,7 +8,7 @@ public class AbilityTreeAblity : MonoBehaviour
     public string nameAblity;
     public int coste;
     public string description;
-
+    public bool IamActive = false;
     [SerializeField] private Extended extended;
 
 
