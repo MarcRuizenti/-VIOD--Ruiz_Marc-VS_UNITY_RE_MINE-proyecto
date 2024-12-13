@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Heart1 : AbilityTreeAblity
 {
+    public int numHeart;
 
     override public void ActiveAblity()
     {
         base.ActiveAblity();
-        GameManager.Instance.heartsActive[0] = true;
+        GameManager.Instance.heartsActive[numHeart] = true;
     }
 }

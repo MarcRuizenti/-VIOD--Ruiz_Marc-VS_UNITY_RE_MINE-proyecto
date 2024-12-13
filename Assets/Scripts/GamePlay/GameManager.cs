@@ -286,4 +286,15 @@ public class GameManager : MonoBehaviour
         abilityManager.SetActive(true);
         abilityManager.GetComponent<AbilityManager>().ActiveSelectionAbilitys();
     }
+
+    public void RegenHeart()
+    {
+        for (int i = 0; i < heartLive.Length; i++)
+        {
+            if (!heartLive[i])
+            {
+                heartLive[i] = true;
+            }
+        }
+    }
 }

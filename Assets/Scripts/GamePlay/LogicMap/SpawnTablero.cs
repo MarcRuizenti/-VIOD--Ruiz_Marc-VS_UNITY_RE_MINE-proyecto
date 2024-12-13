@@ -102,6 +102,7 @@ public class SpawnTablero : MonoBehaviour
                 {
                     GameManager.Instance.habilityList.Clear();
                     GameManager.Instance.timerCounter = GameManager.Instance.timer;
+                    GameManager.Instance.RegenHeart();
                 }
                 GameManager.Instance.reset = false;
             }
