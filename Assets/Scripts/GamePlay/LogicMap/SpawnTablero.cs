@@ -98,6 +98,11 @@ public class SpawnTablero : MonoBehaviour
             {
                 _logicMap.ClearArrays();
                 SpwanTablero();
+                if (!GameManager.Instance.Iwin)
+                {
+                    GameManager.Instance.habilityList.Clear();
+                    GameManager.Instance.timerCounter = GameManager.Instance.timer;
+                }
                 GameManager.Instance.reset = false;
             }
         }

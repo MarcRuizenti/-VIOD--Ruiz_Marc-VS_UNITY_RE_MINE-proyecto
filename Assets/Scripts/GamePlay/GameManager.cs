@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public int numMinasBase;
     public int numBanderas;
     public int levelnum = 1;
-    private bool Iwin;
+    public bool Iwin = false;
     public bool canMove = true;
     public bool reset = false;
     public float timer;
@@ -53,10 +53,26 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    [Header("HeartSystem")]
+    public bool[] heartLive;
+
+    public bool[] heartsActive;
+
+    public Image[] hearts;
+
+    public Sprite breakHeart;
+    public Sprite heart;
+
 
     private void Awake()
     {
         Instance = this;
+        heartsActive = new bool[3];
+        heartLive = new bool[3];
+        for (int i = 0; i < heartLive.Length; i++)
+        {
+            heartLive[i] = true;
+        }
     }
     private void Start()
     {
@@ -64,6 +80,25 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+
+        if (heartsActive[0])
+        {
+            for (int i = 0; i < hearts.Length; i++)
+            {
+                if (heartsActive[i])
+                {
+                    hearts[i].gameObject.SetActive(true);
+                    if (heartLive[i])
+                    {
+                        hearts[i].sprite = heart;
+                    }
+                    else
+                    {
+                        hearts[i].sprite = breakHeart;
+                    }
+                }
+            }
+        }
 
         if (Input.GetButtonDown("Fire1") && canMove && habilityList.Count != 0 )
         {
@@ -204,7 +239,7 @@ public class GameManager : MonoBehaviour
         levelnum++;
         numBanderas = 0;
         numMinas += 3;
-        timerCounter = timer + timerCounter;
+        timerCounter = timer/2 + timerCounter;
         canMove = true;
         reset = true;
         if (selectionAbility)

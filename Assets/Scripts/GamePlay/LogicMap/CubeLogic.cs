@@ -37,23 +37,26 @@ public class CubeLogic : MonoBehaviour
     {
         if (iAmSelected)
         {
-            if (transform.gameObject.GetComponent<Renderer>().materials.Length == 1)
+            if (!IAmclick)
             {
-                Material temp = transform.gameObject.GetComponent<Renderer>().material;
-                transform.gameObject.GetComponent<Renderer>().materials = new Material[] { temp, Outline };
-
-                if (!callVecino)
+                if (transform.gameObject.GetComponent<Renderer>().materials.Length == 1)
                 {
-                    if (GameManager.Instance != null)
+                    Material temp = transform.gameObject.GetComponent<Renderer>().material;
+                    transform.gameObject.GetComponent<Renderer>().materials = new Material[] { temp, Outline };
+
+                    if (!callVecino)
                     {
-                        if (GameManager.Instance.activeRevelar && GameManager.Instance.habilityActive.level == 2)
+                        if (GameManager.Instance != null)
                         {
-                            for (int i = 0; i < vecinos.Length; i++)
+                            if (GameManager.Instance.activeRevelar && GameManager.Instance.habilityActive.level == 2)
                             {
-                                if (vecinos[i] != null)
+                                for (int i = 0; i < vecinos.Length; i++)
                                 {
-                                    vecinos[i].GetComponent<CubeLogic>().iAmSelected = true;
-                                    vecinos[i].GetComponent<CubeLogic>().callVecino = true;
+                                    if (vecinos[i] != null)
+                                    {
+                                        vecinos[i].GetComponent<CubeLogic>().iAmSelected = true;
+                                        vecinos[i].GetComponent<CubeLogic>().callVecino = true;
+                                    }
                                 }
                             }
                         }
@@ -137,7 +140,7 @@ public class CubeLogic : MonoBehaviour
                                 {
                                     if (vecinos[i] != null)
                                     {
-                                        vecinos[i].GetComponent<CubeLogic>().Transparent();
+                                        if (!vecinos[i].GetComponent<CubeLogic>().IAmclick) vecinos[i].GetComponent<CubeLogic>().Transparent();
                                     }
                                 }
                             }

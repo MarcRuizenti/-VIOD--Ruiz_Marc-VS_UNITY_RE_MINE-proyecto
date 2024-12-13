@@ -255,6 +255,34 @@ public class LogicMap : MonoBehaviour
                 }
                 else
                 {
+                    if (GameManager.Instance.heartsActive[0])
+                    {
+                        if (GameManager.Instance.heartsActive[2])
+                        {
+                            if (GameManager.Instance.heartLive[2])
+                            {
+                                GameManager.Instance.heartLive[2] = false;
+                                GameManager.Instance.AddBandera();
+                                return;
+                            }
+                        }
+                        if (GameManager.Instance.heartsActive[1])
+                        {
+                            if (GameManager.Instance.heartLive[1])
+                            {
+                                GameManager.Instance.heartLive[1] = false;
+                                GameManager.Instance.AddBandera();
+                                return;
+                            }
+                        }
+                        if (GameManager.Instance.heartLive[0])
+                        {
+                            GameManager.Instance.heartLive[0] = false;
+                            GameManager.Instance.AddBandera();
+                            return;
+                        }
+                    }
+
                     GameManager.Instance.Loss();
                     return;
                 }

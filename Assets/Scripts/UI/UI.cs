@@ -18,7 +18,7 @@ public class UI : MonoBehaviour
     public void LoadMenu()
     {
         GameManager.Instance.ResetGamePlay();
-        SceneManager.LoadScene("Menu");
+        GameManager.Instance.reset = true;
     }
 
     public void ChangeLevel()
