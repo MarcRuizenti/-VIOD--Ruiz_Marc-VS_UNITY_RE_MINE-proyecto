@@ -5,6 +5,8 @@ using TMPro;
 
 public class AbilityManager : MonoBehaviour
 {
+    [SerializeField] private UIHablityManager hablityManagerUI;
+
     [Header("Prefabs")]
     [SerializeField] private GameObject[] abilitys;
 
@@ -52,12 +54,20 @@ public class AbilityManager : MonoBehaviour
         }
     }
 
-    public void SelectAbility1()
+    public void SelectAbility(int num)
     {
         bool have = false;
         int numAnility = 0;
-        Hability temp = Instantiate(abilitys[a1]).GetComponent<Hability>();
+        Hability temp = null;
 
+        if (num == 1)
+        {
+            temp = Instantiate(abilitys[a1]).GetComponent<Hability>();
+        }
+        else
+        {
+            temp = Instantiate(abilitys[a2]).GetComponent<Hability>();
+        }
         for (int i = 0; i < GameManager.Instance.habilityList.Count; i++)
         {
             if (GameManager.Instance.habilityList[i].nameHability == temp.nameHability)
@@ -72,42 +82,16 @@ public class AbilityManager : MonoBehaviour
         {
             GameManager.Instance.habilityList.Add(temp);
             GameManager.Instance.ChangeLevel();
+            hablityManagerUI.ActualizeAblityUI();
+            temp.ablityManagerUI = hablityManagerUI;
         }
         else
         {
             Destroy(temp);
             GameManager.Instance.habilityList[numAnility].LevelUp();
             GameManager.Instance.ChangeLevel();
+            hablityManagerUI.ActualizeAblityUI();
         }
 
-    }
-
-    public void SelectAbility2()
-    {
-        bool have = false;
-        int numAnility = 0;
-        Hability temp = Instantiate(abilitys[a2]).GetComponent<Hability>();
-
-        for (int i = 0; i < GameManager.Instance.habilityList.Count; i++)
-        {
-            if (GameManager.Instance.habilityList[i].nameHability == temp.nameHability)
-            {
-                have = true;
-                numAnility = i;
-                break;
-            }
-        }
-
-        if (!have)
-        {
-            GameManager.Instance.habilityList.Add(temp);
-            GameManager.Instance.ChangeLevel();
-        }
-        else
-        {
-            Destroy(temp.gameObject);
-            GameManager.Instance.habilityList[numAnility].LevelUp();
-            GameManager.Instance.ChangeLevel();
-        }
     }
 }

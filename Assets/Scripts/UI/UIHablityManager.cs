@@ -21,18 +21,37 @@ public class UIHablityManager : MonoBehaviour
 
     public Color defaultColor;
 
-    void Update()
+
+    private void Update()
+    {
+        for (int i = 0; i < GameManager.Instance.habilityList.Count; i++)
+        {
+            if (panels[i].activeSelf)
+            {
+                if (GameManager.Instance.habilityList[i].isActive)
+                {
+                    panels[i].GetComponent<Image>().color = GameManager.Instance.habilityList[i].color;
+                }
+                else
+                {
+                    panels[i].GetComponent<Image>().color = defaultColor;
+                }
+            }
+        }
+    }
+    public void ActualizeAblityUI()
     {
         if (GameManager.Instance != null)
         {
             int num = GameManager.Instance.habilityList.Count;
-            for (int i = 0; i < 3; i++) 
+            for (int i = 0; i < 3; i++)
             {
                 if (i < num)
                 {
                     if (GameManager.Instance.habilityList[i].energy != GameManager.Instance.habilityList[i].maxEnergy)
                     {
                         addEnergy[i].gameObject.SetActive(true);
+                        addEnergy[i].onClick.RemoveAllListeners();
                         addEnergy[i].onClick.AddListener(GameManager.Instance.habilityList[i].AddEnergy);
                     }
                     else
@@ -46,14 +65,7 @@ public class UIHablityManager : MonoBehaviour
                     maxEnergy[i].text = GameManager.Instance.habilityList[i].maxEnergy.ToString();
                     numCopys[i].text = GameManager.Instance.habilityList[i].numCopis.ToString();
                     numNeedToLevelUp[i].text = GameManager.Instance.habilityList[i].numCopisLevelUp[GameManager.Instance.habilityList[i].level - 1].ToString();
-                    if (GameManager.Instance.habilityList[i].isActive)
-                    {
-                        panels[i].GetComponent<Image>().color = GameManager.Instance.habilityList[i].color;
-                    }
-                    else
-                    {
-                        panels[i].GetComponent<Image>().color = defaultColor;
-                    }
+                    
                 }
                 else
                 {
@@ -63,3 +75,4 @@ public class UIHablityManager : MonoBehaviour
         }
     }
 }
+

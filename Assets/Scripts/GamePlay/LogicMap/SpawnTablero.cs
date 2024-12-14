@@ -104,6 +104,14 @@ public class SpawnTablero : MonoBehaviour
                     GameManager.Instance.timerCounter = GameManager.Instance.timer;
                     GameManager.Instance.RegenHeart();
                 }
+
+                for (int i = 0; i< _logicMap.miniCubes.Count; i++)
+                {
+                    Destroy(_logicMap.miniCubes[i]);
+                }
+
+                _logicMap.miniCubes.Clear();
+
                 GameManager.Instance.reset = false;
             }
         }

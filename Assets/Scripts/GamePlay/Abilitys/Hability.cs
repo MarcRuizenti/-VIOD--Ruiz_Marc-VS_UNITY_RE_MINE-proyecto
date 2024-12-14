@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Hability : MonoBehaviour
 {
+    public UIHablityManager ablityManagerUI = null;
+
     public bool isActive = false;
     public int energy = 0;
     public int maxEnergy = 0;
@@ -42,10 +44,15 @@ public class Hability : MonoBehaviour
 
     public void AddEnergy()
     {
+        Debug.Log("Putos");
         if (energy + 1 <= maxEnergy)
         {
             energy++;
             GameManager.Instance.timerCounter -= 60;
+            if (ablityManagerUI != null)
+            {
+                ablityManagerUI.ActualizeAblityUI();
+            }
         }
     }
 }

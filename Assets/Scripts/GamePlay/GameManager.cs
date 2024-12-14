@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
         if (temp % 2 == 0 && !selectionAbility)
         {
             numCube++;
-            timer += 60;
+            timerCounter += 60;
             ActiveSelectionAbilitisCanvas();
             return;
         }
@@ -276,6 +276,7 @@ public class GameManager : MonoBehaviour
         oneHanilityActive = false;
         habilityActive.energy--;
         habilityActive.DesActiveAbility();
+        habilityActive.ablityManagerUI.ActualizeAblityUI();
         habilityActive = null;
     }
 

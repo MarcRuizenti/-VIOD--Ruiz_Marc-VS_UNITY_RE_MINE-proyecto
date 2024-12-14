@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -208,6 +209,8 @@ public class CubeLogic : MonoBehaviour
 
         _miniCube = temp;
 
+        _logicMap.miniCubes.Add(temp);
+
         IAmTransparent = true;
     }
 
@@ -215,6 +218,8 @@ public class CubeLogic : MonoBehaviour
     {
         if (IAmTransparent)
         {
+
+            _logicMap.miniCubes.Remove(_miniCube);
             Destroy(_miniCube);
         }
     }

@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class LogicMap : MonoBehaviour
 {
+
+    public List<GameObject> miniCubes;
     public GameObject[,,] lista { get; private set; }
     private Material[,,] listaMeriales;
     private bool[,,] listaMinas;
@@ -246,10 +248,7 @@ public class LogicMap : MonoBehaviour
                 if (GameManager.Instance.activeShild)
                 {
                     GameManager.Instance.activeShild = false;
-                    GameManager.Instance.habilityActive.DesActiveAbility();
-                    GameManager.Instance.oneHanilityActive = false;
-                    GameManager.Instance.habilityActive.energy--;
-                    GameManager.Instance.habilityActive = null;
+                    GameManager.Instance.DesactiveAbility();
                     GameManager.Instance.AddBandera();
                     cube.GetComponent<CubeLogic>().IAmclick = true;
                     return;
