@@ -15,6 +15,9 @@ public class AbilityManager : MonoBehaviour
     [SerializeField] private TMP_Text[] energys;
     [SerializeField] private TMP_Text[] description;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip _addAbility;
+
     private int a1 = 0;
     private int a2 = 0;
 
@@ -81,6 +84,7 @@ public class AbilityManager : MonoBehaviour
         if (!have)
         {
             GameManager.Instance.habilityList.Add(temp);
+            SoundManager.Instance.EjecutarAudio(_addAbility);
             GameManager.Instance.ChangeLevel();
             hablityManagerUI.ActualizeAblityUI();
             temp.ablityManagerUI = hablityManagerUI;

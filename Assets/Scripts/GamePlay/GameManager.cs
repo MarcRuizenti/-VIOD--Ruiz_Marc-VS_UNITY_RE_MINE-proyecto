@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     public Button nextLevel;
     public Button menuLoss;
+    public Button resetLoss;
     public Button menuWin;
 
     public static GameManager Instance;
@@ -221,6 +222,7 @@ public class GameManager : MonoBehaviour
         {
             lossText.gameObject.SetActive(newBool);
             menuLoss.gameObject.SetActive(newBool);
+            resetLoss.gameObject.SetActive(newBool);
         }
     }
 

@@ -15,14 +15,23 @@ public class UI : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void LoadMenu()
+    public void ResetGamePlay()
     {
         GameManager.Instance.ResetGamePlay();
         GameManager.Instance.reset = true;
     }
 
+    public void LoadMenu()
+    {
+        LoadScene("Menu");
+    }
     public void ChangeLevel()
     {
         GameManager.Instance.ChangeLevel();
+    }
+
+    public void PlaySound(AudioClip audio)
+    {
+        SoundManager.Instance.EjecutarAudio(audio);
     }
 }

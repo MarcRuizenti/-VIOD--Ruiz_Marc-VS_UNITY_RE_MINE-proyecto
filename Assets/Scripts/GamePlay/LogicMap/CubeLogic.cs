@@ -28,9 +28,16 @@ public class CubeLogic : MonoBehaviour
 
     private GameObject[] vecinos;
 
+    [Header("Sounds")]
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip clickAudio;
+    [SerializeField] private AudioClip flagAudio;
+    [SerializeField] private AudioClip selected;
+
     private void Start()
     {
         vecinos = _logicMap.GetVecions(this);
+        _audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -44,6 +51,7 @@ public class CubeLogic : MonoBehaviour
                 {
                     Material temp = transform.gameObject.GetComponent<Renderer>().material;
                     transform.gameObject.GetComponent<Renderer>().materials = new Material[] { temp, Outline };
+                    _audioSource.PlayOneShot(selected);
 
                     if (!callVecino)
                     {
@@ -122,12 +130,12 @@ public class CubeLogic : MonoBehaviour
         {
             if (_logicMap != null)
             {
-                if (IAmclick)
+                if (IAmclick && numCube != 0)
                 {
+                    _audioSource.PlayOneShot(clickAudio);
                     _logicMap.dobelClick(this.gameObject);
-
                 }
-                if (!IAmclick && !bandera)
+                if (!IAmclick &&!bandera)
                 {
                     if (GameManager.Instance != null)
                     {
@@ -153,6 +161,7 @@ public class CubeLogic : MonoBehaviour
                     }
                     IAmclick = true;
                     _logicMap.Click(this.gameObject);
+                    _audioSource.PlayOneShot(clickAudio);
                     if (GameManager.Instance != null)
                     {
                         if (GameManager.Instance.activeSandClock)
@@ -187,6 +196,8 @@ public class CubeLogic : MonoBehaviour
                     transform.GetComponent<Renderer>().material = _bandera;
                     bandera = !bandera;
                     if (GameManager.Instance != null) GameManager.Instance.AddBandera();
+
+                    _audioSource.PlayOneShot(flagAudio);
                 }
                 else
                 {

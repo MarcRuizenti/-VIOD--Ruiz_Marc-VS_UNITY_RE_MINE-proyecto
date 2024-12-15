@@ -424,7 +424,7 @@ public class LogicMap : MonoBehaviour
                 }
             }
         }
-
+        Debug.Log(numVecinosConMina);
         return numVecinosConMina;
     }
 
