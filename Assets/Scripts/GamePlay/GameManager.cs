@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public bool activeRevelar = false;
     public Hability habilityActive = null;
     [SerializeField] private GameObject abilityManager;
+    [SerializeField] private UIHablityManager UIabilityManager;
 
     [Header("AbilityTree")]
 
@@ -299,5 +300,10 @@ public class GameManager : MonoBehaviour
                 heartLive[i] = true;
             }
         }
+    }
+
+    public void ActualizeAblityUI()
+    {
+        UIabilityManager.ActualizeAblityUI();
     }
 }

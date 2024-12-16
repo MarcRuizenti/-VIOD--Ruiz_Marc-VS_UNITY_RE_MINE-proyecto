@@ -54,7 +54,7 @@ MonoBehaviour:
   description: Mira que hay debajo
   numCopis: 0
   numCopisLevelUp: 0200000002000000
-  color: {r: 1, g: 0.3823665, b: 0, a: 0.5882353}
+  color: {r: 1, g: 0.3823665, b: 0, a: 1}
   _recarge: {fileID: 8300000, guid: d68241fe5ab9ac5439ff01c4c071c8f1, type: 3}
 --- !u!82 &7932753804202749939
 AudioSource:

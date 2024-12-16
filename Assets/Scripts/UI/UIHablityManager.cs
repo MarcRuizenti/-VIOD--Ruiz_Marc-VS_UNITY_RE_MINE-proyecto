@@ -44,6 +44,7 @@ public class UIHablityManager : MonoBehaviour
         if (GameManager.Instance != null)
         {
             int num = GameManager.Instance.habilityList.Count;
+            Debug.Log(num);
             for (int i = 0; i < 3; i++)
             {
                 if (i < num)

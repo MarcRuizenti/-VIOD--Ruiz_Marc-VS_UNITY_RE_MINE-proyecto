@@ -101,11 +101,12 @@ public class SpawnTablero : MonoBehaviour
                 if (!GameManager.Instance.Iwin)
                 {
                     GameManager.Instance.habilityList.Clear();
+                    GameManager.Instance.ActualizeAblityUI();
                     GameManager.Instance.timerCounter = GameManager.Instance.timer;
                     GameManager.Instance.RegenHeart();
                 }
 
-                for (int i = 0; i< _logicMap.miniCubes.Count; i++)
+                for (int i = 0; i < _logicMap.miniCubes.Count; i++)
                 {
                     Destroy(_logicMap.miniCubes[i]);
                 }
