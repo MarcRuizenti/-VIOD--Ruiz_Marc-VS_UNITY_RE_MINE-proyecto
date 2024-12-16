@@ -123,12 +123,12 @@ public class GameManager : MonoBehaviour
                 abilityTree.gameObject.SetActive(true);
                 canvasGamePlay.gameObject.SetActive(false);
             }
-            else if (!canMove)
-            {
-                canMove = true;
-                abilityTree.gameObject.SetActive(false);
-                canvasGamePlay.gameObject.SetActive(true);
-            }
+        }
+        else if (!canMove)
+        {
+            canMove = true;
+            abilityTree.gameObject.SetActive(false);
+            canvasGamePlay.gameObject.SetActive(true);
         }
         if (timerCounter > 0 && canMove)
         {
@@ -205,7 +205,10 @@ public class GameManager : MonoBehaviour
             ActiveSelectionAbilitisCanvas();
             return;
         }
-        ChangeUIWin(true);
+        if (!selectionAbility)
+        {
+            ChangeUIWin(true);
+        }
     }
 
     public void Loss()
