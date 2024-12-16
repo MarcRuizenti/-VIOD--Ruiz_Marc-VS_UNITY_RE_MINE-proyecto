@@ -7,7 +7,7 @@ public class Heart1 : AbilityTreeAblity
 {
     public int numHeart;
 
-    private void Update()
+    override protected void Update()
     {
         if (numHeart != 0)
         {

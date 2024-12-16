@@ -109,8 +109,9 @@ MonoBehaviour:
   callVecino: 0
   numCube: 0
   clickAudio: {fileID: 8300000, guid: ca960679dea80e44884135bf5ff221e8, type: 3}
-  flagAudio: {fileID: 8300000, guid: 7bd1193756b0f8e40bb3ceeb43efa898, type: 3}
+  flagAudio: {fileID: 8300000, guid: a0bb84315da04944b97008c3f47f4a8d, type: 3}
   selected: {fileID: 8300000, guid: b4db3aa3907fde749a6ae533fa5604a3, type: 3}
+  explosion: {fileID: 8300000, guid: 455df8bf471231747919e646e5a7da57, type: 3}
 --- !u!65 &1488238131599116461
 BoxCollider:
   m_ObjectHideFlags: 0

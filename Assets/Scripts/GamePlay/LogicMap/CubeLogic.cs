@@ -33,6 +33,7 @@ public class CubeLogic : MonoBehaviour
     [SerializeField] private AudioClip clickAudio;
     [SerializeField] private AudioClip flagAudio;
     [SerializeField] private AudioClip selected;
+    [SerializeField] private AudioClip explosion;
 
     private void Start()
     {
@@ -235,4 +236,9 @@ public class CubeLogic : MonoBehaviour
         }
     }
     
+    public void PlayExplosion()
+    {
+        _audioSource.PlayOneShot(explosion);
+    }
+
 }

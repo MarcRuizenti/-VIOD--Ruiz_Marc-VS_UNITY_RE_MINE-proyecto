@@ -287,6 +287,7 @@ public class LogicMap : MonoBehaviour
                     }
 
                     GameManager.Instance.Loss();
+                    cube.GetComponent<CubeLogic>().PlayExplosion();
                     return;
                 }
             }
@@ -424,7 +425,6 @@ public class LogicMap : MonoBehaviour
                 }
             }
         }
-        Debug.Log(numVecinosConMina);
         return numVecinosConMina;
     }
 
