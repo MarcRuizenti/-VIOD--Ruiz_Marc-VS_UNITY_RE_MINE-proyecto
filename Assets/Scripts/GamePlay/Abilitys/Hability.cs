@@ -50,7 +50,6 @@ public class Hability : MonoBehaviour
 
     public void AddEnergy()
     {
-        Debug.Log("Putos");
         if (energy + 1 <= maxEnergy)
         {
             _audioSource.PlayOneShot(_recarge);

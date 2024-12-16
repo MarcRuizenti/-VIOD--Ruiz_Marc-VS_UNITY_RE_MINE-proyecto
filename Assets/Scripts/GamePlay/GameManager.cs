@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     [Header("AbilityTree")]
 
     [SerializeField] private Canvas abilityTree;
+    [SerializeField] private LevelManager levelManager;
 
     [Header("UI")]
     [SerializeField] private Canvas canvasGamePlay;
@@ -114,23 +115,21 @@ public class GameManager : MonoBehaviour
         {
             AbilityLogicActivate(2);
         }
-
-        if (Input.GetButtonDown("Q"))
+        if (levelnum == 1 && canMove)
         {
-            if (canMove)
+            if (Input.GetButtonDown("Q"))
             {
                 canMove = false;
                 abilityTree.gameObject.SetActive(true);
                 canvasGamePlay.gameObject.SetActive(false);
             }
-            else
+            else if (!canMove)
             {
                 canMove = true;
                 abilityTree.gameObject.SetActive(false);
                 canvasGamePlay.gameObject.SetActive(true);
             }
         }
-
         if (timerCounter > 0 && canMove)
         {
             timerCounter -= Time.deltaTime;
@@ -271,6 +270,7 @@ public class GameManager : MonoBehaviour
         {
             ChangeUILoss(false);
         }
+        levelManager.AddEXP();
         canMove = true;
     }
 
@@ -281,6 +281,7 @@ public class GameManager : MonoBehaviour
         habilityActive.DesActiveAbility();
         habilityActive.ablityManagerUI.ActualizeAblityUI();
         habilityActive = null;
+        levelManager.count++;
     }
 
     public void ActiveSelectionAbilitisCanvas()
