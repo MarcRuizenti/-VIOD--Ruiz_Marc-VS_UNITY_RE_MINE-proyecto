@@ -24,15 +24,14 @@ public class SliderManager : MonoBehaviour
 
     public void SetMusicVolume()
     {
-        audioMixer.SetFloat("music", Mathf.Log10(musicSlider.value)*20);
+        audioMixer.SetFloat("music", Mathf.Log10(musicSlider.value) * 20);
         PlayerPrefs.SetFloat("musicVolume", musicSlider.value);
-
     }
+
     public void SetSFXVolume()
     {
         audioMixer.SetFloat("SFX", Mathf.Log10(sfxSlider.value) * 20);
         PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
-
     }
 
     private void Load()
@@ -43,6 +42,4 @@ public class SliderManager : MonoBehaviour
         SetMusicVolume();
         SetSFXVolume();
     }
-
-
 }
