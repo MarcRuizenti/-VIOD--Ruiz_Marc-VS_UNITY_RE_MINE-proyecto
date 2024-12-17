@@ -13833,6 +13833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogoPanel: {fileID: 1575001273}
   dialogoText: {fileID: 1539706424}
+  panelTuto: {fileID: 2071144985}
   dialogos:
   - 'Roboto: Click izquierdo en el cubo.'
   - "Roboto: \xBFSabes jugar al buscaminas? (Si la respuesta es si pulsa q si no
@@ -13846,6 +13847,9 @@ MonoBehaviour:
   - "Roboto: Este n\xFAmero te indica el nivel en el que te encuentras."
   - "Roboto: Este otro es el tiempo que tienes para pasarte el nivel, si llega a
     cero pierdes. Tambi\xE9n tiene m\xE1s usos que te contar\xE9 luego. "
+  - "Roboto: Y por \xFAltimo estos n\xFAmeros te indican el n\xFAmero de banderas
+    que llevas puestas y el n\xFAmero de minas respectivamente."
+  - 
   - "Roboto: Y por \xFAltimo estos n\xFAmeros te indican el n\xFAmero de banderas
     que llevas puestas y el n\xFAmero de minas respectivamente."
   typingTime: 0.05

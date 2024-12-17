@@ -17,6 +17,7 @@ public class TutorialManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Canvas dialogoPanel;
     [SerializeField] private TMP_Text dialogoText;
+    [SerializeField] private GameObject panelTuto;
 
     [Header("Dialogos")]
     [SerializeField, TextArea(4, 6)] private string[] dialogos;
@@ -40,15 +41,7 @@ public class TutorialManager : MonoBehaviour
             UIGamePlay.gameObject.SetActive(false);
             timerCount = timer;
         }
-        if (dialogoText.text == dialogos[lineIndex])
-        {
-            NextDialogueLine();
-        }
-        else
-        {
-            StopAllCoroutines();
-            dialogoText.text = dialogos[lineIndex];
-        } 
+        NextDialog();
     }
 
     void Update()
@@ -58,35 +51,16 @@ public class TutorialManager : MonoBehaviour
 
             if (Input.GetButtonDown("Q"))
             {
-                lineIndex = 5; 
-                if (dialogoText.text == dialogos[lineIndex])
-                {
-                    NextDialogueLine();
-                }
-                else
-                {
-                    StopAllCoroutines();
-                    dialogoText.text = dialogos[lineIndex];
-                }
+                lineIndex = 5;
+                NextDialog();
                 GameManager.Instance.canClickQ = true;
-                UIGamePlay.gameObject.SetActive(true);
                 canPressE = true;
                 dialogoStart = true;
             }
 
             if (Input.GetButtonDown("E"))
             {
-                if (dialogoText.text == dialogos[lineIndex])
-                {
-                    NextDialogueLine();
-                    canPressE = true;
-                    dialogoStart = true;
-                }
-                else
-                {
-                    StopAllCoroutines();
-                    dialogoText.text = dialogos[lineIndex];
-                }
+                NextDialog();
             }
         }
 
@@ -113,18 +87,22 @@ public class TutorialManager : MonoBehaviour
 
         if (Input.GetButtonDown("E") && canPressE && dialogoStart)
         {
-            if (dialogoText.text == dialogos[lineIndex])
-            {
-                NextDialogueLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogoText.text = dialogos[lineIndex];
-            }
+            NextDialog();
         }
     }
 
+    private void NextDialog()
+    {        
+        if (dialogoText.text == dialogos[lineIndex])
+        {
+            NextDialogueLine();
+        }
+        else
+        {
+            StopAllCoroutines();
+            dialogoText.text = dialogos[lineIndex];
+        }
+    }
     private void StartDialogue()
     {
         dialogoPanel.gameObject.SetActive(true);
@@ -134,10 +112,31 @@ public class TutorialManager : MonoBehaviour
     private void NextDialogueLine()
     {
         lineIndex++;
+        Debug.Log(lineIndex);
+        if (lineIndex == 8)
+        {
+            panelnumMinas.transform.parent = UIGamePlay.transform;
+            UIGamePlay.gameObject.SetActive(true);
+            panelTuto.gameObject.SetActive(false);
+            return;
+        }
+        switch (lineIndex)
+        {
+            case 5:
+                panelLevel.transform.parent = panelTuto.transform;
+                break;
+            case 6:
+                panelLevel.transform.parent = UIGamePlay.transform;
+                panelTimer.transform.parent = panelTuto.transform;
+                break;
+            case 7:
+                panelTimer.transform.parent = UIGamePlay.transform;
+                panelnumMinas.transform.parent = panelTuto.transform;
+                break;
+        }
         if (lineIndex < dialogos.Length)
         {
             StartCoroutine(ShowLine());
-
         }
         else
         {
