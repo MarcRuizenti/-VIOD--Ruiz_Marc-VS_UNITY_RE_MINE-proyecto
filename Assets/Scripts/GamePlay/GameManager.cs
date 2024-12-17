@@ -71,6 +71,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TutorialManager tutorialManager;
     public bool firtClickCube = false;
     public bool canClickQ = true;
+    public bool firstAbility = false;
+    public bool firstSelectionAbility = false;
+    public bool firstLoss = false;
+    public bool firstQ = false;
 
 
     private void Awake()
@@ -113,7 +117,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && canMove && habilityList.Count != 0 )
+        if (Input.GetButtonDown("Fire1") && canMove && habilityList.Count != 0)
         {
             AbilityLogicActivate(0);
         }
@@ -126,22 +130,32 @@ public class GameManager : MonoBehaviour
             AbilityLogicActivate(2);
         }
 
-        if (canClickQ && canMove)
+        if (canClickQ)
         {
-            if (levelnum == 1)
+            if (levelnum == 1 && Input.GetButtonDown("Q"))
             {
-                if (Input.GetButtonDown("Q"))
+                if (canMove)
                 {
-                    ClickQ();
+                    if (tutorialManager != null)
+                    {
+                        if (!firstQ && tutorialManager.lineIndex == 17)
+                        {
+                            firstQ = true;
+                        }
+                    }
+                    canMove = false;
+                    abilityTree.gameObject.SetActive(true);
+                    canvasGamePlay.gameObject.SetActive(false);
+                }
+                else
+                {
+                    canMove = true;
+                    abilityTree.gameObject.SetActive(false);
+                    canvasGamePlay.gameObject.SetActive(true);
                 }
             }
-            else
-            {
-                canMove = true;
-                abilityTree.gameObject.SetActive(false);
-                canvasGamePlay.gameObject.SetActive(true);
-            }
         }
+        
 
         if (timerCounter > 0 && canMove)
         {
@@ -170,10 +184,7 @@ public class GameManager : MonoBehaviour
     {
         if (tutorialManager == null || canClickQ)
         {
-            canMove = false;
-            abilityTree.gameObject.SetActive(true);
-            canvasGamePlay.gameObject.SetActive(false);
-            return;
+            
         }
     }
     public void AbilityLogicActivate(int num)
@@ -285,6 +296,13 @@ public class GameManager : MonoBehaviour
 
     public void ResetGamePlay()
     {
+        if (tutorialManager != null)
+        {
+            if (!firstLoss && tutorialManager.lineIndex == 15)
+            {
+                firstLoss = true;
+            }
+        }
         levelnum = 1;
         numCube = numCubeBase;
         numMinas = numMinasBase;
@@ -298,6 +316,7 @@ public class GameManager : MonoBehaviour
         }
         levelManager.AddEXP();
         canMove = true;
+        reset = true;
     }
 
     public void DesactiveAbility()
@@ -332,5 +351,17 @@ public class GameManager : MonoBehaviour
     public void ActualizeAblityUI()
     {
         UIabilityManager.ActualizeAblityUI();
+    }
+
+    public void AddAbility(Hability hability)
+    {
+        if (tutorialManager != null)
+        {
+            if (!firstAbility)
+            {
+                if (habilityList.Count == 0) firstAbility = true;
+            }
+        }
+        habilityList.Add(hability);
     }
 }

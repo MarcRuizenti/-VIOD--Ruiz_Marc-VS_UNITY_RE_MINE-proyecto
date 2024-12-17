@@ -13835,7 +13835,7 @@ MonoBehaviour:
   dialogoText: {fileID: 1539706424}
   panelTuto: {fileID: 2071144985}
   dialogos:
-  - 'Roboto: Click izquierdo en el cubo.'
+  - 'Roboto: Click izquierdo en el cubo y rota clicando la rueda del raton.'
   - "Roboto: \xBFSabes jugar al buscaminas? (Si la respuesta es si pulsa q si no
     E)"
   - "Roboto: Parece complicado, pero es f\xE1cil. \xBFVes los n\xFAmeros? Te indican
@@ -13844,18 +13844,31 @@ MonoBehaviour:
     casillas que creas que hay mina. Si todas las minas tienen la bandera puesta
     encima ganas.'
   - 'Roboto: Pero si clicas en una mina, pierdes.'
-  - 'Roboto: Pulsa E'
+  - 
   - "Roboto: Este n\xFAmero te indica el nivel en el que te encuentras."
   - "Roboto: Este otro es el tiempo que tienes para pasarte el nivel, si llega a
     cero pierdes. Tambi\xE9n tiene m\xE1s usos que te contar\xE9 luego. "
   - "Roboto: Y por \xFAltimo estos n\xFAmeros te indican el n\xFAmero de banderas
     que llevas puestas y el n\xFAmero de minas respectivamente."
   - 
-  - "Roboto: Y por \xFAltimo estos n\xFAmeros te indican el n\xFAmero de banderas
-    que llevas puestas y el n\xFAmero de minas respectivamente."
-  - "Roboto: Y por \xFAltimo estos n\xFAmeros te indican el n\xFAmero de banderas
-    que llevas puestas y el n\xFAmero de minas respectivamente."
-  typingTime: 0.05
+  - 'Roboto: Cada dos niveles podras elejir un abilidad pero solo tienes 3 huecos
+    hasi que pienesa bien cuales quieres.'
+  - 
+  - 'Roboto: Como puedes ver ahora tienes una habilidad equipada. Puedes ver el nivel
+    de la misma, las energias que tienes y las maxima capacidad.'
+  - 'Roboto: Las energias las consigues cambiadolas por un minuto del timer y al
+    subir de nivel una abilidad re repondra entera.'
+  - 'Roboto: Y para acabar con las abilidades, para subirlas de nivel tendras que
+    volver a elejirlas. En LevelUp te dice las copias que tiene y te hacen falta.'
+  - 
+  - 'Roboto: Ahora que has jugado un rato prueba a darle a la q.'
+  - 
+  - "Roboto: !!!Un arbol de abilidades\xA1\xA1\xA1 Cada nivel que subes te dara un
+    punto para comprar las pasivas."
+  - 'Roboto: La EXP se gana unsando las abilidades, despues de cada partida se te
+    sumara.  '
+  lineIndex: 0
+  typingTime: 0.02
   SoudsKeysList:
   - {fileID: 8300000, guid: 7ea38573df8c1a04bb9950db7a60ccf8, type: 3}
   - {fileID: 8300000, guid: 2387c33e8c30f2e46a4d5307012b8578, type: 3}
@@ -15153,6 +15166,10 @@ PrefabInstance:
       propertyPath: numBanderasText
       value: 
       objectReference: {fileID: 1171468911}
+    - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
+      propertyPath: tutorialManager
+      value: 
+      objectReference: {fileID: 1980412279}
     - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: UIabilityManager
       value: 

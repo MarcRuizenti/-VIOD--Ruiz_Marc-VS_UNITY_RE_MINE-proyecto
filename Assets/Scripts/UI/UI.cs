@@ -18,7 +18,6 @@ public class UI : MonoBehaviour
     public void ResetGamePlay()
     {
         GameManager.Instance.ResetGamePlay();
-        GameManager.Instance.reset = true;
     }
 
     public void LoadMenu()

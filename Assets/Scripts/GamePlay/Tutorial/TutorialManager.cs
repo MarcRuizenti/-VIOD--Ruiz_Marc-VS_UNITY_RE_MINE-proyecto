@@ -22,7 +22,7 @@ public class TutorialManager : MonoBehaviour
     [Header("Dialogos")]
     [SerializeField, TextArea(4, 6)] private string[] dialogos;
     private bool dialogoStart = false;
-    private int lineIndex = 0;
+    public int lineIndex = 0;
     [SerializeField] private float typingTime = 0.05f;
     private bool canPressE = false;
 
@@ -46,14 +46,60 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
+
+        if (GameManager.Instance.levelnum == 5)
+        {
+            GameManager.Instance.Iwin = false;
+            GameManager.Instance.ResetGamePlay();
+        }
+
+        if (GameManager.Instance.firstQ)
+        {
+            canPressE = true;
+            dialogoStart = true;
+            dialogoPanel.gameObject.SetActive(true);
+            NextDialogueLine();
+            GameManager.Instance.canMove = false;
+            GameManager.Instance.firstQ = false;
+        }
+
+        if (GameManager.Instance.firstLoss)
+        {
+            canPressE = true;
+            dialogoStart = true;
+            dialogoPanel.gameObject.SetActive(true);
+            NextDialogueLine();
+            GameManager.Instance.canMove = false;
+            GameManager.Instance.firstLoss = false;
+        }
+
+        if (GameManager.Instance.firstSelectionAbility)
+        {
+            canPressE = true;
+            dialogoStart = true;
+            dialogoPanel.gameObject.SetActive(true);
+            NextDialogueLine();
+            GameManager.Instance.canMove = false;
+            GameManager.Instance.firstSelectionAbility = false;
+        }
+
+        if (GameManager.Instance.firstAbility)
+        {
+            canPressE = true;
+            dialogoStart = true;
+            dialogoPanel.gameObject.SetActive(true);
+            NextDialogueLine();
+            GameManager.Instance.canMove = false;
+            GameManager.Instance.firstAbility = false;
+        }
+
         if (!GameManager.Instance.canMove && !GameManager.Instance.canClickQ && !canPressE)
         {
 
             if (Input.GetButtonDown("Q"))
             {
-                lineIndex = 5;
-                NextDialog();
-                GameManager.Instance.canClickQ = true;
+                lineIndex = 4;
+                NextDialogueLine();
                 canPressE = true;
                 dialogoStart = true;
             }
@@ -129,10 +175,14 @@ public class TutorialManager : MonoBehaviour
                 panelnumMinas.transform.parent = panelTuto.transform;
                 break;
             case 9:
+            case 11:
+            case 15:
+            case 17:
                 panelnumMinas.transform.parent = UIGamePlay.transform;
                 UIGamePlay.gameObject.SetActive(true);
                 dialogoPanel.gameObject.SetActive(false);
                 GameManager.Instance.canMove = true;
+                GameManager.Instance.canClickQ = true;
                 return;
             default:
                 break;
@@ -144,6 +194,8 @@ public class TutorialManager : MonoBehaviour
         else
         {
             dialogoStart = false;
+            GameManager.Instance.canMove = true;
+
             dialogoPanel.gameObject.SetActive(false);
         }
     }

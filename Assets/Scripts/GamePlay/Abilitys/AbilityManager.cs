@@ -23,6 +23,10 @@ public class AbilityManager : MonoBehaviour
 
     public void ActiveSelectionAbilitys()
     {
+        if (GameManager.Instance.levelnum == 1)
+        {
+            GameManager.Instance.firstSelectionAbility = true;
+        }
         a1 = Random.Range(0, abilitys.Length);
         a2 = Random.Range(0, abilitys.Length);
 
@@ -83,7 +87,7 @@ public class AbilityManager : MonoBehaviour
 
         if (!have)
         {
-            GameManager.Instance.habilityList.Add(temp);
+            GameManager.Instance.AddAbility(temp);
             SoundManager.Instance.EjecutarAudio(_addAbility);
             GameManager.Instance.ChangeLevel();
             hablityManagerUI.ActualizeAblityUI();
