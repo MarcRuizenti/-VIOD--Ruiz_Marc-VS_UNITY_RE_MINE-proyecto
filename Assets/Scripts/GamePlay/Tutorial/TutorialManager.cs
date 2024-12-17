@@ -112,26 +112,29 @@ public class TutorialManager : MonoBehaviour
     private void NextDialogueLine()
     {
         lineIndex++;
-        Debug.Log(lineIndex);
-        if (lineIndex == 8)
-        {
-            panelnumMinas.transform.parent = UIGamePlay.transform;
-            UIGamePlay.gameObject.SetActive(true);
-            panelTuto.gameObject.SetActive(false);
-            return;
-        }
         switch (lineIndex)
         {
             case 5:
+                NextDialogueLine();
+                return;
+            case 6:
                 panelLevel.transform.parent = panelTuto.transform;
                 break;
-            case 6:
+            case 7:
                 panelLevel.transform.parent = UIGamePlay.transform;
                 panelTimer.transform.parent = panelTuto.transform;
                 break;
-            case 7:
+            case 8:
                 panelTimer.transform.parent = UIGamePlay.transform;
                 panelnumMinas.transform.parent = panelTuto.transform;
+                break;
+            case 9:
+                panelnumMinas.transform.parent = UIGamePlay.transform;
+                UIGamePlay.gameObject.SetActive(true);
+                dialogoPanel.gameObject.SetActive(false);
+                GameManager.Instance.canMove = true;
+                return;
+            default:
                 break;
         }
         if (lineIndex < dialogos.Length)

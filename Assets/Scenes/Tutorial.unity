@@ -13839,17 +13839,20 @@ MonoBehaviour:
   - "Roboto: \xBFSabes jugar al buscaminas? (Si la respuesta es si pulsa q si no
     E)"
   - "Roboto: Parece complicado, pero es f\xE1cil. \xBFVes los n\xFAmeros? Te indican
-    la cantidad de minas que tiene al rededor esa casilla."
-  - 'Roboto: Con el click derecho pones las banderas, las tienes que poner en las
-    casillas que creas que hay mina. Si todas las minmas tienen la bandera puesta
-    encima gansa.'
-  - 'Roboto: Pero si clicas en una mina pierdes.'
+    la cantidad de minas que tiene al rededor de esa casilla."
+  - 'Roboto: Con el clic derecho pones las banderas, las tienes que poner en las
+    casillas que creas que hay mina. Si todas las minas tienen la bandera puesta
+    encima ganas.'
+  - 'Roboto: Pero si clicas en una mina, pierdes.'
+  - 'Roboto: Pulsa E'
   - "Roboto: Este n\xFAmero te indica el nivel en el que te encuentras."
   - "Roboto: Este otro es el tiempo que tienes para pasarte el nivel, si llega a
     cero pierdes. Tambi\xE9n tiene m\xE1s usos que te contar\xE9 luego. "
   - "Roboto: Y por \xFAltimo estos n\xFAmeros te indican el n\xFAmero de banderas
     que llevas puestas y el n\xFAmero de minas respectivamente."
   - 
+  - "Roboto: Y por \xFAltimo estos n\xFAmeros te indican el n\xFAmero de banderas
+    que llevas puestas y el n\xFAmero de minas respectivamente."
   - "Roboto: Y por \xFAltimo estos n\xFAmeros te indican el n\xFAmero de banderas
     que llevas puestas y el n\xFAmero de minas respectivamente."
   typingTime: 0.05
