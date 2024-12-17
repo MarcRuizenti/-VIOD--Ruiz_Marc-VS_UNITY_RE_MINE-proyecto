@@ -194,8 +194,6 @@ public class TutorialManager : MonoBehaviour
         else
         {
             dialogoStart = false;
-            GameManager.Instance.canMove = true;
-
             dialogoPanel.gameObject.SetActive(false);
         }
     }

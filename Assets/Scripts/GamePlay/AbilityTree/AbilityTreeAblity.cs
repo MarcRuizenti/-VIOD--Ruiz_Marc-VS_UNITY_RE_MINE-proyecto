@@ -10,6 +10,7 @@ public class AbilityTreeAblity : MonoBehaviour
     public int coste;
     public string description;
     public bool IAmActive = false;
+    protected bool canActivate = false;
     [SerializeField] private Extended extended;
 
     [SerializeField] private Sprite frameBlock;
@@ -36,6 +37,8 @@ public class AbilityTreeAblity : MonoBehaviour
         if (GameManager.Instance.pointsXp - coste >= 0)
         {
             GameManager.Instance.pointsXp -= coste;
+            canActivate = true;
+
         }
     }
     public void Extended()

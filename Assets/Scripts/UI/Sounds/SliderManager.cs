@@ -25,7 +25,7 @@ public class SliderManager : MonoBehaviour
     public void SetMusicVolume()
     {
         audioMixer.SetFloat("music", Mathf.Log10(musicSlider.value) * 20);
-        PlayerPrefs.SetFloat("musicVolume", musicSlider.value);
+        PlayerPrefs.SetFloat("musicVolume", musicSlider.value); 
     }
 
     public void SetSFXVolume()

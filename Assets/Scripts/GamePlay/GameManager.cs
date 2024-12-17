@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIHablityManager UIabilityManager;
 
     [Header("AbilityTree")]
-
     [SerializeField] private Canvas abilityTree;
     [SerializeField] private LevelManager levelManager;
 
@@ -48,26 +47,20 @@ public class GameManager : MonoBehaviour
     public TMP_Text numMinasText;
     public TMP_Text numBanderasText;
     public TMP_Text levelText;
-
     public Button nextLevel;
     public Button menuLoss;
     public Button resetLoss;
     public Button menuWin;
-
     public static GameManager Instance;
 
     [Header("HeartSystem")]
     public bool[] heartLive;
-
     public bool[] heartsActive;
-
     public Image[] hearts;
-
     public Sprite breakHeart;
     public Sprite heart;
 
     [Header("Tutorial")]
-
     [SerializeField] private TutorialManager tutorialManager;
     public bool firtClickCube = false;
     public bool canClickQ = true;
@@ -76,7 +69,8 @@ public class GameManager : MonoBehaviour
     public bool firstLoss = false;
     public bool firstQ = false;
 
-
+    [Header("Boss")]
+    [SerializeField] private BossManager bossManager;
     private void Awake()
     {
         Instance = this;
