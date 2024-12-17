@@ -66,6 +66,12 @@ public class GameManager : MonoBehaviour
     public Sprite breakHeart;
     public Sprite heart;
 
+    [Header("Tutorial")]
+
+    [SerializeField] private TutorialManager tutorialManager;
+    public bool firtClickCube = false;
+    public bool canClickQ = true;
+
 
     private void Awake()
     {
@@ -80,6 +86,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         timerCounter = timer;
+        if (tutorialManager != null)
+        {
+            canClickQ = false;
+        }
     }
     private void Update()
     {
@@ -115,21 +125,24 @@ public class GameManager : MonoBehaviour
         {
             AbilityLogicActivate(2);
         }
-        if (levelnum == 1 && canMove)
+
+        if (canClickQ && canMove)
         {
-            if (Input.GetButtonDown("Q"))
+            if (levelnum == 1)
             {
-                canMove = false;
-                abilityTree.gameObject.SetActive(true);
-                canvasGamePlay.gameObject.SetActive(false);
+                if (Input.GetButtonDown("Q"))
+                {
+                    ClickQ();
+                }
+            }
+            else
+            {
+                canMove = true;
+                abilityTree.gameObject.SetActive(false);
+                canvasGamePlay.gameObject.SetActive(true);
             }
         }
-        else if (!canMove)
-        {
-            canMove = true;
-            abilityTree.gameObject.SetActive(false);
-            canvasGamePlay.gameObject.SetActive(true);
-        }
+
         if (timerCounter > 0 && canMove)
         {
             timerCounter -= Time.deltaTime;
@@ -153,6 +166,16 @@ public class GameManager : MonoBehaviour
         if (levelText != null) levelText.text = levelnum.ToString();
     }
 
+    public void ClickQ() 
+    {
+        if (tutorialManager == null || canClickQ)
+        {
+            canMove = false;
+            abilityTree.gameObject.SetActive(true);
+            canvasGamePlay.gameObject.SetActive(false);
+            return;
+        }
+    }
     public void AbilityLogicActivate(int num)
     {
         if (!oneHanilityActive)
