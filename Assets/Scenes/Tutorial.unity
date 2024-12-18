@@ -1997,10 +1997,10 @@ RectTransform:
   m_Father: {fileID: 1470037135}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -1533.7516, y: -616.0411}
+  m_AnchorMin: {x: 0.39933342, y: 0.27840745}
+  m_AnchorMax: {x: 0.5992918, y: 0.71500003}
+  m_AnchoredPosition: {x: 1.5, y: 3.5000305}
+  m_SizeDelta: {x: 1.2484131, y: -7.0410767}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &253090470
 MonoBehaviour:
@@ -5806,6 +5806,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818322767}
   m_CullTransparentMesh: 1
+--- !u!1 &853994291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 853994292}
+  - component: {fileID: 853994294}
+  - component: {fileID: 853994293}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &853994292
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853994291}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1575001274}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.09200001}
+  m_AnchorMax: {x: 0.21800001, y: 0.5578519}
+  m_AnchoredPosition: {x: -25, y: 2}
+  m_SizeDelta: {x: 44.4935, y: -2.6511993}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &853994293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853994291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: eafb8abd14aea6b44ae7c0c91119744a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &853994294
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853994291}
+  m_CullTransparentMesh: 1
 --- !u!1 &911861372
 GameObject:
   m_ObjectHideFlags: 0
@@ -7865,7 +7941,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1001056578}
           m_TargetAssemblyTypeName: UI, Assembly-CSharp
           m_MethodName: PlaySound
           m_Mode: 2
@@ -7949,7 +8025,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1001056578}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 2
@@ -7961,7 +8037,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1001056578}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: Return
         m_Mode: 1
@@ -8272,7 +8348,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.1
+  m_fontSize: 50.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11603,7 +11679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.163, y: 0.09415537}
   m_AnchorMax: {x: 0.36858904, y: 0.24829102}
-  m_AnchoredPosition: {x: -1.5, y: -0.5699768}
+  m_AnchoredPosition: {x: -1.5000458, y: -0.5699768}
   m_SizeDelta: {x: 0.042999268, y: 1.576004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1448325915
@@ -11623,7 +11699,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1001056578}
           m_TargetAssemblyTypeName: UI, Assembly-CSharp
           m_MethodName: PlaySound
           m_Mode: 2
@@ -11707,7 +11783,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1001056578}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 2
@@ -11719,7 +11795,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1001056578}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: LoadMenu
         m_Mode: 1
@@ -13014,6 +13090,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2071144986}
+  - {fileID: 853994292}
   - {fileID: 1714698225}
   m_Father: {fileID: 0}
   m_RootOrder: 14
