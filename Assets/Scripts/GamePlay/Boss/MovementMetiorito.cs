@@ -6,13 +6,20 @@ using UnityEngine;
 public class MovementMetiorito : MonoBehaviour
 {
     public GameObject objetivo;
-    [SerializeField] private float speed;
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float minSpeed;
+    private float useSpeed;
     private bool canUse = true;
+    [SerializeField] private ParticleSystem particleSystem;
+
+
     void Update()
     {
         Vector3 direction = objetivo.transform.position - transform.position;
 
-        transform.position += direction * speed * Time.deltaTime;
+        useSpeed = Random.Range(minSpeed, maxSpeed);
+
+        transform.position += direction * useSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +33,9 @@ public class MovementMetiorito : MonoBehaviour
                 other.GetComponent<CubeLogic>().Click();
             }
         }
+        ParticleSystem temp = Instantiate(particleSystem, transform.position, transform.rotation);
 
+        temp.transform.parent = null;
         Destroy(this.gameObject);
     }
 }

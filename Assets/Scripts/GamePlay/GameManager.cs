@@ -91,6 +91,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetButtonDown("F2"))
+        {
+            pointsXp++;
+        }
 
         if (heartsActive[0])
         {
@@ -172,14 +176,6 @@ public class GameManager : MonoBehaviour
         if (numBanderasText != null) numBanderasText.text = numBanderas.ToString();
 
         if (levelText != null) levelText.text = levelnum.ToString();
-    }
-
-    public void ClickQ() 
-    {
-        if (tutorialManager == null || canClickQ)
-        {
-            
-        }
     }
     public void AbilityLogicActivate(int num)
     {

@@ -317,7 +317,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objetivo: {fileID: 0}
-  speed: 1
+  maxSpeed: 1
+  minSpeed: 0.5
+  useSpeed: 0
+  particleSystem: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
 --- !u!65 &-1144215502366712271
 BoxCollider:
   m_ObjectHideFlags: 0

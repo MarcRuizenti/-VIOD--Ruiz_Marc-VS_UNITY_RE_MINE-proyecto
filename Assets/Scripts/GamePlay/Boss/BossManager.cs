@@ -24,12 +24,11 @@ public class BossManager : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource musicBase;
+    [SerializeField] private AudioSource musicBoss;
 
     
     private void Update()
     {
-
-
         if (GameManager.Instance.levelnum == 10 && canActivate)
         {
             canActivate = false;
@@ -38,6 +37,7 @@ public class BossManager : MonoBehaviour
             lvNum.SetActive(false);
             BossText.SetActive(true);
             musicBase.mute = true;
+            musicBoss.mute = false;
             timerStartSpawnCounter = timerStartSpawn;
         }
         else if (GameManager.Instance.levelnum != 10)
@@ -47,6 +47,7 @@ public class BossManager : MonoBehaviour
             lvNum.SetActive(true);
             BossText.SetActive(false);
             musicBase.mute = false;
+            musicBoss.mute = true;
         }
 
         if (activate)
@@ -78,44 +79,46 @@ public class BossManager : MonoBehaviour
         {
             case 0:
                 y = 0;
-                x = Random.Range(GameManager.Instance.numCube, numCube);
-                z = Random.Range(0, numCube);
+                x = Random.Range(GameManager.Instance.numCube + 15, numCube);
+                z = Random.Range(GameManager.Instance.numCube + 15, numCube);
                 break;
 
             case 1:
                 y = numCube - 1;
-                x = Random.Range(GameManager.Instance.numCube, numCube);
-                z = Random.Range(GameManager.Instance.numCube, numCube);
+                x = Random.Range(GameManager.Instance.numCube + 15, numCube);
+                z = Random.Range(GameManager.Instance.numCube + 15, numCube);
                 break;
 
             case 2:
                 z = 0;
-                x = Random.Range(GameManager.Instance.numCube, numCube);
-                y = Random.Range(GameManager.Instance.numCube, numCube);
+                x = Random.Range(GameManager.Instance.numCube + 15, numCube);
+                y = Random.Range(GameManager.Instance.numCube + 15, numCube);
                 break;
 
             case 3:
                 z = numCube - 1;
-                x = Random.Range(GameManager.Instance.numCube, numCube);
-                y = Random.Range(GameManager.Instance.numCube, numCube);
+                x = Random.Range(GameManager.Instance.numCube + 15, numCube);
+                y = Random.Range(GameManager.Instance.numCube + 15, numCube);
                 break;
 
             case 4:
                 x = 0;
-                y = Random.Range(GameManager.Instance.numCube, numCube);
-                z = Random.Range(GameManager.Instance.numCube, numCube);
+                y = Random.Range(GameManager.Instance.numCube + 15, numCube);
+                z = Random.Range(GameManager.Instance.numCube + 15, numCube);
                 break;
 
             case 5:
                 x = numCube - 1;
-                y = Random.Range(GameManager.Instance.numCube, numCube);
-                z = Random.Range(GameManager.Instance.numCube, numCube);
+                y = Random.Range(GameManager.Instance.numCube + 15, numCube);
+                z = Random.Range(GameManager.Instance.numCube + 15, numCube);
                 break;
         }
 
         GameObject temp = Instantiate(metirito, new Vector3(x, y, z), Quaternion.identity);
 
         temp.GetComponent<MovementMetiorito>().objetivo = tablero;
+
+        temp.transform.parent = Camera.main.transform;
     }
 
     
