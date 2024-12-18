@@ -35,7 +35,6 @@ public class MovementMetiorito : MonoBehaviour
         }
         ParticleSystem temp = Instantiate(particleSystem, transform.position, transform.rotation);
 
-        temp.transform.parent = null;
         Destroy(this.gameObject);
     }
 }

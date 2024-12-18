@@ -118,7 +118,6 @@ public class BossManager : MonoBehaviour
 
         temp.GetComponent<MovementMetiorito>().objetivo = tablero;
 
-        temp.transform.parent = Camera.main.transform;
     }
 
     
