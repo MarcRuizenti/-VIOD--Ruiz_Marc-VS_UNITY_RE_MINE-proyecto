@@ -97,8 +97,8 @@ public class AbilityManager : MonoBehaviour
         {
             Destroy(temp);
             GameManager.Instance.habilityList[numAnility].LevelUp();
-            GameManager.Instance.ChangeLevel();
             hablityManagerUI.ActualizeAblityUI();
+            GameManager.Instance.ChangeLevel();
         }
 
     }

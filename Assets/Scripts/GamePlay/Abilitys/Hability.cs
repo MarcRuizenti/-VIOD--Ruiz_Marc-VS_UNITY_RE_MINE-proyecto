@@ -36,7 +36,7 @@ public class Hability : MonoBehaviour
 
     virtual public void LevelUp()
     {
-        if (numCopisLevelUp.Length >= level)
+        if (numCopisLevelUp.Length > level)
         {
             numCopis++;
             if (numCopisLevelUp[level - 1] == numCopis)

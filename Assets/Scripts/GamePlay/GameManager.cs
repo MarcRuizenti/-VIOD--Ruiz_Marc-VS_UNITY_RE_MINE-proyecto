@@ -91,6 +91,20 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (habilityActive != null)
+        {
+            if (Input.GetButtonDown("F4"))
+            {
+                habilityActive.LevelUp();
+                ActualizeAblityUI();
+            }
+        }
+
+        if (Input.GetButtonDown("F3"))
+        {
+            timerCounter += 60;
+        }
+
         if (Input.GetButtonDown("F2"))
         {
             pointsXp++;

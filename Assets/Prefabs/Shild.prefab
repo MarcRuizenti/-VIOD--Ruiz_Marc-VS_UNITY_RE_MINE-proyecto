@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7764156806009315594
 MonoBehaviour:
@@ -53,7 +53,7 @@ MonoBehaviour:
   nameHability: Shield
   description: No pierdes al revelar una mina
   numCopis: 0
-  numCopisLevelUp: 0100000002000000
+  numCopisLevelUp: 010000000200000003000000
   color: {r: 0.039443493, g: 0, b: 1, a: 1}
   _recarge: {fileID: 8300000, guid: d68241fe5ab9ac5439ff01c4c071c8f1, type: 3}
 --- !u!82 &-2899941512190174579

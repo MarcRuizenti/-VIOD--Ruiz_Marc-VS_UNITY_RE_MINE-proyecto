@@ -247,10 +247,18 @@ public class LogicMap : MonoBehaviour
             {
                 if (GameManager.Instance.activeShild)
                 {
-                    GameManager.Instance.activeShild = false;
-                    GameManager.Instance.DesactiveAbility();
+                    if (GameManager.Instance.habilityActive.level >= 2)
+                    {
+                        GameManager.Instance.timerCounter += 30;
+                    }
+                    if (GameManager.Instance.habilityActive.level != 3)
+                    {
+                        GameManager.Instance.activeShild = false;
+                        GameManager.Instance.DesactiveAbility();
+                    }
                     GameManager.Instance.AddBandera();
                     cube.GetComponent<CubeLogic>().IAmclick = true;
+
                     return;
                 }
                 else
@@ -293,6 +301,11 @@ public class LogicMap : MonoBehaviour
             }
             SceneManager.LoadScene("Menu");
             return;
+        }
+        else if (GameManager.Instance.activeShild)
+        {
+            GameManager.Instance.activeShild = false;
+            GameManager.Instance.DesactiveAbility();
         }
 
         if (temp != numeroMinas[0]) return;

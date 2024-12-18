@@ -14960,7 +14960,7 @@ PrefabInstance:
       objectReference: {fileID: 1853064917}
     - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: levelnum
-      value: 9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7273173579783963319, guid: 0e7feee3cc32da947bf336ad77a4013a, type: 3}
       propertyPath: lossText

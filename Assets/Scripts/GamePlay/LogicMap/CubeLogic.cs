@@ -235,11 +235,6 @@ public class CubeLogic : MonoBehaviour
                         GameManager.Instance.activeSandClock = false;
                         GameManager.Instance.DesactiveAbility();
                     }
-                    else if (GameManager.Instance.activeShild)
-                    {
-                        GameManager.Instance.activeShild = false;
-                        GameManager.Instance.DesactiveAbility();
-                    }
                 }
                 DestroyMiniCube();
             }
