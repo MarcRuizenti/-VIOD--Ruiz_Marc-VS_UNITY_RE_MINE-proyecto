@@ -8,7 +8,7 @@ public class BossManager : MonoBehaviour
     [SerializeField] private GameObject metirito;
     [SerializeField] private GameObject tablero;
     private bool activate = false;
-    private bool canActivate = true;
+    public bool canActivate = true;
 
     [Header("Timers")]
     public float timerStartSpawn;

@@ -33,4 +33,9 @@ public class UI : MonoBehaviour
     {
         SoundManager.Instance.EjecutarAudio(audio);
     }
+
+    public void Return()
+    {
+        GameManager.Instance.Return();
+    }
 }

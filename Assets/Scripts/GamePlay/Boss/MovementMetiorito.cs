@@ -15,11 +15,14 @@ public class MovementMetiorito : MonoBehaviour
 
     void Update()
     {
-        Vector3 direction = objetivo.transform.position - transform.position;
+        if (GameManager.Instance.canMove)
+        {
+            Vector3 direction = objetivo.transform.position - transform.position;
 
-        useSpeed = Random.Range(minSpeed, maxSpeed);
+            useSpeed = Random.Range(minSpeed, maxSpeed);
 
-        transform.position += direction * useSpeed * Time.deltaTime;
+            transform.position += direction * useSpeed * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

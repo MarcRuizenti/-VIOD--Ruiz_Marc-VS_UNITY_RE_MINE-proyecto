@@ -1,7 +1,7 @@
 
 using System.Collections.Generic;
 using TMPro;
-
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,6 +71,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Boss")]
     [SerializeField] private BossManager bossManager;
+
+    [Header("Pause")]
+
+    [SerializeField] Canvas pause;
+
     private void Awake()
     {
         Instance = this;
@@ -91,6 +96,19 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetButtonDown("ESC"))
+        {
+            if (canMove)
+            {
+                canMove = false;
+                pause.gameObject.SetActive(true);
+            }
+            else
+            {
+                Return();
+            }
+        }
+
         if (habilityActive != null)
         {
             if (Input.GetButtonDown("F4"))
@@ -190,6 +208,12 @@ public class GameManager : MonoBehaviour
         if (numBanderasText != null) numBanderasText.text = numBanderas.ToString();
 
         if (levelText != null) levelText.text = levelnum.ToString();
+    }
+
+    public void Return() 
+    {
+        canMove = true;
+        pause.gameObject.SetActive(false);
     }
     public void AbilityLogicActivate(int num)
     {
@@ -306,6 +330,10 @@ public class GameManager : MonoBehaviour
             {
                 firstLoss = true;
             }
+        }
+        if (bossManager != null)
+        {
+            bossManager.canActivate = true;
         }
         levelnum = 1;
         numCube = numCubeBase;
