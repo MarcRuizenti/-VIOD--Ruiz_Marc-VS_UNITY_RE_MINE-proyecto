@@ -109,6 +109,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (Input.GetButtonDown("F5"))
+        {
+            levelnum++;
+        }
+
         if (habilityActive != null)
         {
             if (Input.GetButtonDown("F4"))
