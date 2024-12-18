@@ -129,58 +129,7 @@ public class CubeLogic : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (_logicMap != null)
-            {
-                if (IAmclick && numCube != 0)
-                {
-                    _audioSource.PlayOneShot(clickAudio);
-                    _logicMap.dobelClick(this.gameObject);
-                }
-                if (!IAmclick &&!bandera)
-                {
-                    if (GameManager.Instance != null)
-                    {
-                        if (GameManager.Instance.activeRevelar && !IAmTransparent)
-                        {
-                            Transparent();
-
-                            if (GameManager.Instance.habilityActive.level == 2)
-                            {
-                                for (int i = 0; i < vecinos.Length; i++)
-                                {
-                                    if (vecinos[i] != null)
-                                    {
-                                        if (!vecinos[i].GetComponent<CubeLogic>().IAmclick) vecinos[i].GetComponent<CubeLogic>().Transparent();
-                                    }
-                                }
-                            }
-
-                            GameManager.Instance.activeRevelar = false;
-                            GameManager.Instance.DesactiveAbility();
-                            return;
-                        }
-                    }
-                    IAmclick = true;
-                    _logicMap.Click(this.gameObject);
-                    _audioSource.PlayOneShot(clickAudio);
-                    GameManager.Instance.firtClickCube = true;
-                    if (GameManager.Instance != null)
-                    {
-                        if (GameManager.Instance.activeSandClock)
-                        {
-                            GameManager.Instance.activeSandClock = false;
-                            GameManager.Instance.DesactiveAbility();
-                        }
-                        else if (GameManager.Instance.activeShild) 
-                        {
-                            GameManager.Instance.activeShild = false;
-                            GameManager.Instance.DesactiveAbility();
-                        }
-                    }
-                    DestroyMiniCube();
-                }
-
-            }
+            Click();
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -242,4 +191,59 @@ public class CubeLogic : MonoBehaviour
         _audioSource.PlayOneShot(explosion);
     }
 
+    public void Click()
+    {
+        if (_logicMap != null)
+        {
+            if (IAmclick && numCube != 0)
+            {
+                _audioSource.PlayOneShot(clickAudio);
+                _logicMap.dobelClick(this.gameObject);
+            }
+            if (!IAmclick && !bandera)
+            {
+                if (GameManager.Instance != null)
+                {
+                    if (GameManager.Instance.activeRevelar && !IAmTransparent)
+                    {
+                        Transparent();
+
+                        if (GameManager.Instance.habilityActive.level == 2)
+                        {
+                            for (int i = 0; i < vecinos.Length; i++)
+                            {
+                                if (vecinos[i] != null)
+                                {
+                                    if (!vecinos[i].GetComponent<CubeLogic>().IAmclick) vecinos[i].GetComponent<CubeLogic>().Transparent();
+                                }
+                            }
+                        }
+
+                        GameManager.Instance.activeRevelar = false;
+                        GameManager.Instance.DesactiveAbility();
+                        return;
+                    }
+                }
+                IAmclick = true;
+                _logicMap.Click(this.gameObject);
+                _audioSource.PlayOneShot(clickAudio);
+                GameManager.Instance.firtClickCube = true;
+                if (GameManager.Instance != null)
+                {
+                    if (GameManager.Instance.activeSandClock)
+                    {
+                        GameManager.Instance.activeSandClock = false;
+                        GameManager.Instance.DesactiveAbility();
+                    }
+                    else if (GameManager.Instance.activeShild)
+                    {
+                        GameManager.Instance.activeShild = false;
+                        GameManager.Instance.DesactiveAbility();
+                    }
+                }
+                DestroyMiniCube();
+            }
+
+        }
+    }
 }

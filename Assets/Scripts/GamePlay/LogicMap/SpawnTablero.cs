@@ -83,6 +83,15 @@ public class SpawnTablero : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
+            if (GameManager.Instance.levelnum == 10)
+            {
+                distanceCamera = 3;
+            }
+            else
+            {
+                distanceCamera = 2.5f;
+            }
+
             if (GameManager.Instance.numBanderas == GameManager.Instance.numMinas)
             {
                 if (_logicMap.checkWin())
@@ -122,7 +131,6 @@ public class SpawnTablero : MonoBehaviour
                 SceneManager.LoadScene("Menu");
             }
         }
-       
 
     }
 }
