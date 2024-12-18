@@ -302,10 +302,14 @@ public class LogicMap : MonoBehaviour
             SceneManager.LoadScene("Menu");
             return;
         }
-        else if (GameManager.Instance.activeShild)
+
+        if (GameManager.Instance != null)
         {
-            GameManager.Instance.activeShild = false;
-            GameManager.Instance.DesactiveAbility();
+            if (GameManager.Instance.activeShild)
+            {
+                GameManager.Instance.activeShild = false;
+                GameManager.Instance.DesactiveAbility();
+            }
         }
 
         if (temp != numeroMinas[0]) return;

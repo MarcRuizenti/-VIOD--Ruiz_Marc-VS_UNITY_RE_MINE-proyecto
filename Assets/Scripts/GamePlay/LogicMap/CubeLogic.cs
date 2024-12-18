@@ -227,7 +227,10 @@ public class CubeLogic : MonoBehaviour
                 IAmclick = true;
                 _logicMap.Click(this.gameObject);
                 _audioSource.PlayOneShot(clickAudio);
-                GameManager.Instance.firtClickCube = true;
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.firtClickCube = true;
+                }
                 if (GameManager.Instance != null)
                 {
                     if (GameManager.Instance.activeSandClock)
